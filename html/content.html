@@ -4,16 +4,40 @@ takes the ContentPane id and prepends it to every element with a declared id in 
 The unique ContentPane id makes all the element ids unique and prevents duplicate id errors across other apps.-->
 
 <section id="top-wrap" >
-	<h3 style="margin-top:10px;">Mitigation potential for select NCS pathways (beta)</h3>
+	<h3 style="margin-top:10px;">Symbolize Projects By</h3>
+	<div id="symbolizeBy" class="toggle-btn" style="width:360px;">
+		<input type="radio" id="lyr1" name="lyrnum" value="2"/>
+		<label for="lyr1">Habitat</label>
+		<input type="radio" id="lyr2" name="lyrnum" value="3"/>
+		<label for="lyr2">Project Type</label>
+		<input type="radio" id="lyr3" name="lyrnum" value="4"/>
+		<label for="lyr3">Coastline Type</label>
+	</div>
+	<div id="lyr-stats-2" class="lyr-stats">
+		<p>Explaination/summarization of Coastal Habitats.</p>
+		<!-- <p>Coastal habitats significantly reduce wave heights.</p>
+		<p>Wave reduction potential varies in the order Coral Reefs > Salt Marshes > Mangroves > Seagrass or Kelp</p>
+		<p>Coral and oyster reef restoration projects are the smallest and most expensive; mangrove projects are the biggest and least expensive</p>
+		<p> Mangrove and marsh restoration can be 2 to 5 times cheaper than a submerged breakwater</p>-->
+	</div>
+	<div id="lyr-stats-3" class="lyr-stats">
+		<p>Field Measurement: explain</p>
+		<p>Habitat Restoration: explain</p>
+	</div>
+	<div id="lyr-stats-4" class="lyr-stats">
+		<p>Bay: explain</p>
+		<p>Estuary: explain</p>
+		<p>Open Coast: explain</p>
+	</div>
+</section>
+<section>
+	<h3 style="margin-top:10px;">View Projects By Country</h3>
 	<div class="flex-wrap">
 		<div class="chosen-wrap" style="margin-bottom:10px; margin-left:3px;">
 			<select data-placeholder="Select a Country" id="selectCountry" class="chosen">
 				<option></option>
 			</select>
 		</div>
-		<div class="c-sel dl-wrap">
-			<button class="button button-default">Country Report</button>
-		</div>	
 	</div>
 	<div class="flex-wrap">	
 		<div class="att-div c-sel">
@@ -33,73 +57,18 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		</div>
 	</div>
 </section>
-<section class="c-sel">
-	<h3>Pathway Mitigation Potential</h3>
-	<div style="position:relative; margin-top:16px">
-		<div class="pathway-name-wrap">
-			<div class="pathway-name"><a href="http://naturalclimatesolutions.org/#reforestation" target="_blank">Reforestation</a></div>
-			<div class="pathway-name"><a href="http://naturalclimatesolutions.org/#forest-protection" target="_blank">Avoided Forest Conversion</a></div>
-			<div class="pathway-name"><a href="http://naturalclimatesolutions.org/#forest-carbon-solutions" target="_blank">Natural Forest Management</a></div>
-			<div class="pathway-name"><a href="http://naturalclimatesolutions.org/#peatlands" target="_blank">Peatland Restoration</a></div>
-			<div class="pathway-name"><a href="http://naturalclimatesolutions.org/#peatlands" target="_blank">Avoided Peat Impacts</a></div>
-			<div class="pathway-name"><a href="http://naturalclimatesolutions.org/#forest-carbon-solutions" target="_blank">Avoided Woodfuel Harvest</a></div>
-			<div class="pathway-name"><a href="http://naturalclimatesolutions.org/#coastal-wetlands" target="_blank">Avoided Coastal Wetland Impacts</a></div>
-			<div class="pathway-name"><a href="http://naturalclimatesolutions.org/#agriculture-livestock" target="_blank">Improved Rice Cultivation</a></div>
-			<div class="pathway-name"><a href="http://naturalclimatesolutions.org/#agriculture-livestock" target="_blank">Grazing-Optimal Intensity</a></div>
-			<div class="pathway-name"><a href="http://naturalclimatesolutions.org/#agriculture-livestock" target="_blank">Grazing-Legumes</a></div>			
+<section class="atts-section">
+	<h3 style="margin-top:10px;" id="-Project_Title" class="nd_atts">Click Projects for More Info</h3>
+	<div class="attWrap">	
+		<div class="nd_attWrap">
+			<div class="nd_attBox"><div>Habitat: <span id="-Habitat" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
+			<div class="nd_attBox"><div>Project Type: <span id="-Project_Type" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
+			<div class="nd_attBox"><div>Coastline Type: <span id="-Coastline_Type" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
+			<div class="nd_attBox"><div>Habitat Width: <span id="-Habitat_Width" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
+			<div class="nd_attBox"><div>Project Cost: <span id="-Project_Cost" class="nd_attSpan nd_atts" style="color:#5d6165;"></span> (<span id="-Project_Cost_Information" class="nd_attSpan nd_atts" style="color:#5d6165;"></span>)</div></div>
+			<div class="nd_attBox"><div>Percent Wave Reduction: <span id="-F__Wave_Reduction" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
+			<div class="nd_attBox"><div>Reported Benefits: <span id="-Project_Benefit_Information" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
+			<!-- <div class="nd_attBox"><div>Photo Credit: <span id="-imgSource" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div> -->
 		</div>
-		<div class="pathway-arrow-wrap">
-			<div class="pathway-arrow"><span class="p-a">&rarr;</span></div>
-			<div class="pathway-arrow"><span class="p-a">&rarr;</span></div>
-			<div class="pathway-arrow"><span class="p-a">&rarr;</span></div>
-			<div class="pathway-arrow"><span class="p-a">&rarr;</span></div>
-			<div class="pathway-arrow"><span class="p-a">&rarr;</span></div>
-			<div class="pathway-arrow"><span class="p-a">&rarr;</span></div>
-			<div class="pathway-arrow"><span class="p-a">&rarr;</span></div>
-			<div class="pathway-arrow"><span class="p-a">&rarr;</span></div>
-			<div class="pathway-arrow"><span class="p-a">&rarr;</span></div>
-			<div class="pathway-arrow"><span class="p-a">&rarr;</span></div>
-		</div>
-		<div class="pathway-units">Mt CO2e</div>
-		<div class="flex-wrap">
-			<div class="pathway-label-wrap">
-				<div class="pathway-label"></div>
-				<div class="pathway-label"></div>
-				<div class="pathway-label"></div>
-				<div class="pathway-label"></div>
-				<div class="pathway-label"></div>
-				<div class="pathway-label"></div>
-				<div class="pathway-label"></div>
-				<div class="pathway-label"></div>
-				<div class="pathway-label"></div>
-				<div class="pathway-label"></div>
-			</div>
-			<div class='pathway-wrap'>	
-				<canvas id="pathwayChart" height="260px"></canvas>
-			</div>
-		</div>
-	</div>		
-</section>
-<section class="c-sel">
-	<h3>Natural Systems Contribution to Paris Commitment</h3>
-	<div style="position:relative; display:flex; margin-top:-16px;">
-		<div class='commitment-wrap'>	
-			<canvas id="commitmentChart" height="150px"></canvas>
-		</div>
-		<div class="lgnd-wrap">
-			<div style="display:flex">
-				<div class="mp-box lgnd-box"></div>
-				<div class="lgnd-text">Maximum Potential</div>
-			</div>
-			<div style="display:flex; margin-top:8px;">
-				<div class="dg-box lgnd-box"></div>
-				<div class="lgnd-text">Cost Effective</div>
-			</div>
-		</div>
-	</div>
-	<div class="lbl-wrap">
-		<div>Total Commitment</div>
-		<div style="text-align:right; flex:1;">Natural Systems</div>
 	</div>	
-	<p style="margin-left:10px; font-size:12px;">Proportion of climate mitigation provided by natural systems and agriculture management compared to the total Paris Agreement mitigation commitment</p>
 </section>

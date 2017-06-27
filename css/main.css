@@ -4,6 +4,9 @@
 .flex-wrap{
 	display:flex;
 }
+.lyr-stats{
+	display:none;
+}
 .att-div{
 	width:124px; margin:3px; border:1pt solid #cdd5d5; padding:5px; box-shadow:0 1px 1px rgba(16,22,26,.2); position:relative;
 }
@@ -75,4 +78,16 @@
 }
 .lbl-wrap{
 	display:flex; font-size:11px; margin:-25px 0px 6px 50px; width:220px;
+}
+.nd_attWrap{
+	display:flex; flex-wrap:wrap;
+}	
+.nd_attBox{
+	width:352px; margin:3px; border:1pt solid #cdd5d5; padding:5px; box-shadow:0 1px 1px rgba(16,22,26,.2); position:relative;
+}
+.nd_attSpan{
+	font-weight:bold;
+}
+.attWrap{
+	display:none;
 }

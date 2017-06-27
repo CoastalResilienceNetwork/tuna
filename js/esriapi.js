@@ -7,7 +7,9 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
         "use strict";
 
         return declare(null, {
-			esriApiFunctions: function(t){	
+			esriApiFunctions: function(t){
+				t.layerDefs = [];	
+				t.layerDefs1 = [];	
 				// Add dynamic map service
 				t.dynamicLayer = new ArcGISDynamicMapServiceLayer(t.url);
 				t.dynamicLayer1 = new ArcGISDynamicMapServiceLayer(t.url, {opacity:0.5});
@@ -29,45 +31,74 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 						t.obj.stateSet = "no";
 					}	
 				});		
-				// get data table
+				// populate countries select	
 				var q = new Query();
-				var qt = new QueryTask(t.url + "/" + t.countries);
+				var qt = new QueryTask(t.url + "/0" );
 				q.where = "OBJECTID > 0";
 				q.returnGeometry = false;
 				q.outFields = ["*"];
 				var c = [];
 				qt.execute(q, function(e){
 					$.each(e.features, function(i,v){
-						t.atts.push(v.attributes)
-						c.push(v.attributes.country + "," +v.attributes.OBJECTID)
+						c.push(v.attributes.Country)
 					})
-					var countries = c.sort();
+					var c1 = _.uniq(c)
+					var countries = c1.sort();
 					$.each(countries,function(i,v){
-						var a = v.split(",")[1];
-						var b = v.split(",")[0];
-						$('#' + t.id + 'selectCountry').append("<option value='" + a + "'>"+ b +"</option")
+						$('#' + t.id + 'selectCountry').append("<option value='" + v + "'>"+ v +"</option")
 					})	
-					$('#' + t.id + 'selectCountry').trigger("chosen:updated");		
+					$('#' + t.id + 'selectCountry').trigger("chosen:updated");
+					// Trigger symbolize by click
+					$( "#" + t.id + "symbolizeBy input[value=" + t.obj.symbolizeBy + "]" ).trigger("click");		
 				});
 				// handle map clicks
 				t.map.setMapCursor("pointer")
 				t.map.on('click',function(c){
 					if (t.open == "yes"){
-						t.querySource = "map";
+						var centerPoint = new esri.geometry.Point(c.mapPoint.x,c.mapPoint.y,c.mapPoint.spatialReference);
+						var mapWidth = t.map.extent.getWidth();
+						var mapWidthPixels = t.map.width;
+						var pixelWidth = mapWidth/mapWidthPixels;
+						// change the tolerence below to adjust how many pixels will be grabbed when clicking on a point or line
+						var tolerance = 10 * pixelWidth;
+						var pnt = c.mapPoint;
+						var ext = new esri.geometry.Extent(1,1, tolerance, tolerance, c.mapPoint.spatialReference);	
 						var pnt = c.mapPoint;
 						var q1 = new Query();
-						var qt1 = new QueryTask(t.url + "/" + t.countries);
-						q1.geometry = pnt;
-						q1.outFields = ["OBJECTID"];
+						var qt1 = new QueryTask(t.url + "/0");
+						q1.geometry = ext.centerAt(centerPoint);
+						q1.outFields = ["*"];
+						t.atts = [];
 						qt1.execute(q1, function(e){
+							var index = t.obj.visibleLayers.indexOf(0);
 							if (e.features.length > 0){
-								var obid = e.features[0].attributes.OBJECTID;
-								$("#" + t.id + "selectCountry").val(obid).trigger("chosen:updated").trigger("change");						
+								t.atts = e.features[0].attributes;
+								$.each( $(".atts-section .nd_atts"), function(i,v){
+									var field = v.id.split("-").pop()
+									var val = t.atts[field]
+									if ( isNaN(t.atts[field]) == false ){
+										val = Math.round(val);
+										val = t.clicks.commaSeparateNumber(val);
+									}
+									if (val == -999){
+										val = "No Data"
+									}	
+									$('#' + v.id).html(val)
+									$(".attWrap").slideDown();
+								})
+								t.layerDefs[0] = "OBJECTID = " + t.atts.OBJECTID ;
+								t.dynamicLayer.setLayerDefinitions(t.layerDefs);
+								if (index == -1){
+									t.obj.visibleLayers.push(0);
+								}	
 							}else{
-								t.obj.visibleLayers = [t.countries];
-								t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-								$("#" + t.id + "selectCountry").val("").trigger("chosen:updated").trigger("change");	
-							}	
+								if (index > -1){
+									t.obj.visibleLayers.splice(index,1)
+								}
+								$(".attWrap").slideUp();
+								$("#" + t.id + "-Project_Title").html("Click Projects for More Info")
+							}
+							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers)	
 						})	
 					}
 				})
