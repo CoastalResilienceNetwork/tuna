@@ -32,11 +32,16 @@ function ( declare, Query, QueryTask ) {
 
 				$( "#" + t.id + "symbolizeBy input" ).click(function(c){
 					t.obj.visibleLayers = [c.target.value];
+					t.obj.symbolizeBy = c.target.value;
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 					$(".lyr-stats").slideUp();
 					$( "#" + t.id + "lyr-stats-" + c.target.value).slideDown();
 				});
-					
+				$( "#" + t.id + "pickHabDes input" ).click(function(c){
+					t.obj.pickHabDes = c.target.value;
+					$(".habDes").slideUp();
+					$("#" + t.id + c.target.value).slideDown();
+				});
 			},
 			commaSeparateNumber: function(val){
 				while (/(\d+)(\d{3})/.test(val.toString())){

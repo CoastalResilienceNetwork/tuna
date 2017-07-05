@@ -50,6 +50,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					$('#' + t.id + 'selectCountry').trigger("chosen:updated");
 					// Trigger symbolize by click
 					$( "#" + t.id + "symbolizeBy input[value=" + t.obj.symbolizeBy + "]" ).trigger("click");		
+					$( "#" + t.id + "pickHabDes input[value=" + t.obj.pickHabDes + "]" ).trigger("click");		
 				});
 				// handle map clicks
 				t.map.setMapCursor("pointer")

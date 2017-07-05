@@ -14,20 +14,33 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		<label for="lyr3">Coastline Type</label>
 	</div>
 	<div id="lyr-stats-2" class="lyr-stats">
-		<p>Explaination/summarization of Coastal Habitats.</p>
-		<!-- <p>Coastal habitats significantly reduce wave heights.</p>
-		<p>Wave reduction potential varies in the order Coral Reefs > Salt Marshes > Mangroves > Seagrass or Kelp</p>
-		<p>Coral and oyster reef restoration projects are the smallest and most expensive; mangrove projects are the biggest and least expensive</p>
-		<p> Mangrove and marsh restoration can be 2 to 5 times cheaper than a submerged breakwater</p>-->
+		<p>Coastal habitats can – and do – provide coastal protection. The level of protection provided depends on the type of habitat and its coastal setting. <!--Here, we summarize information on the protection provided by various coastal habitats as part of a study conducted by the Coastal Defenses Working Group, of the Science for Nature and People Partnership.--></p>
+		<div id="pickHabDes" class="toggle-btn">
+			<input type="radio" id="hab1" name="habs" value="CoralReef"/>
+			<label for="hab1">Coral Reef</label>
+			<input type="radio" id="hab2" name="habs" value="Mangrove"/>
+			<label for="hab2">Mangrove</label>
+			<input type="radio" id="hab3" name="habs" value="MarshWetland"/>
+			<label for="hab3">Marsh Wetland</label>
+			<input type="radio" id="hab4" name="habs" value="OysterReef"/>
+			<label for="hab4">Oyster Reef</label>
+			<input type="radio" id="hab5" name="habs" value="Seagrass"/>
+			<label for="hab5">Seagrass</label>
+		</div>
+		<p class="habDes" id="CoralReef">Diverse underwater ecosystems held together by carbonate reef structures built by colonies of living organisms, mostly in shallow, tropical waters. Coral reefs often occur in areas of high wave energy and they have high potential and value for coastal protection. The Working Group showed that coral reefs can reduce wave heights by up to 70%.</p>
+		<p class="habDes" id="Mangrove">Inter-tidal, halophytic (salt-loving) trees with distinctive aerial root system, occurring on tropical coastlines. Mangroves are known to attenuate waves and storm surges, trap sediment, build land and thus provide coastal protection. Unlike reefs, mangroves tend to prefer sheltered, low energy coastlines though they do occur on coasts exposed to tropical cyclones and hurricanes. The Coastal Defenses Working Group found that mangroves can reduce wave heights by 31%.</p>
+		<p class="habDes" id="MarshWetland">Salt marsh wetlands are the temperate equivalent of mangroves. Unlike mangroves, salt marshes comprise flexible grass-like vegetation. Like mangroves, salt marshes prefer low wave energy coastlines and can reduce waves and storm surges. However, they can occur at very high densities and can reduce wave heights by around 70%.</p>
+		<p class="habDes" id="OysterReef">Nearshore reef structures built and held together by living oysters. They are structurally similar to coral reefs and attenuate waves similarly to coral reefs, though they tend to occur on relatively sheltered coastlines. Oyster reefs can be engineered and managed and have been implemented in an increasing number of sites around the world, for coastal protection and water quality enhancement.</p>
+		<p class="habDes" id="Seagrass">Seagrass and kelp are underwater vegetated ecosystems that occur tropical and temperate coastlines. When they occur in shallower regions, they can attenuate waves by increasing the bed friction of the underlying bathymetry. The Coastal Defenses group found that seagrass and kelp beds can reduce wave heights by more than 30%.</p>
 	</div>
 	<div id="lyr-stats-3" class="lyr-stats">
-		<p>Field Measurement: explain</p>
-		<p>Habitat Restoration: explain</p>
+		<p>Field Measurement: refers to a direct measurement, in the field, of wave reduction through a habitat. This is achieved by measuring wave heights along 1 or more transects, with the outermost measurement located seaward of the habitat and the innermost measurement located either within or behind the habitat. The Working Group synthesized over 70 such measurements in various habitats to assess their coastal protection potential.</p>
+		<p>Habitat Restoration: refers to a project that restored a habitat in order to achieve a coastal protection objective. The Working Group analyzed over 50 such projects that provided information on the costs of restoration of various habitats, and some assessment of the coastal protection benefits achieved through this restoration.</p>
 	</div>
 	<div id="lyr-stats-4" class="lyr-stats">
-		<p>Bay: explain</p>
-		<p>Estuary: explain</p>
-		<p>Open Coast: explain</p>
+		<p>Bay: A recessed, partly sheltered body of water that directly connects to a larger body such as a sea or an ocean.</p>
+		<p>Estuary: A part of a river where the river meets the sea, characterized by a widening of the river, mixing of fresh and saltwater and riverine and tidal influences.</p>
+		<p>Open Coast: An open stretch of coast, usually exposed to waves that are perpendicular or nearly perpendicular to the shoreline.</p>
 	</div>
 </section>
 <section>
