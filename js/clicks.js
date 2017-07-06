@@ -42,6 +42,16 @@ function ( declare, Query, QueryTask ) {
 					$(".habDes").slideUp();
 					$("#" + t.id + c.target.value).slideDown();
 				});
+				$( "#" + t.id + "pickProjDes input" ).click(function(c){
+					t.obj.pickProjDes = c.target.value;
+					$(".projDes").slideUp();
+					$("#" + t.id + c.target.value).slideDown();
+				});
+				$( "#" + t.id + "pickCstDes input" ).click(function(c){
+					t.obj.pickCstDes = c.target.value;
+					$(".cstDes").slideUp();
+					$("#" + t.id + c.target.value).slideDown();
+				});
 			},
 			commaSeparateNumber: function(val){
 				while (/(\d+)(\d{3})/.test(val.toString())){

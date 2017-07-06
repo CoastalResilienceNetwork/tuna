@@ -111,3 +111,13 @@
 .lyr-stats .toggle-btn label:first-of-type, .lyr-stats .toggle-btn label:last-of-type {
     border-radius: 0 !important;
 }
+.habDes{
+	display:none; margin-left:-20px;
+}
+.projDes{
+	display:none; margin-left:-20px;
+}
+.cstDes{
+	display:none; margin-left:-20px;
+}
+

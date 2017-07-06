@@ -3,6 +3,8 @@
 	"visibleLayers1": [1],
 	"symbolizeBy": 2,
 	"pickHabDes": "CoralReef",
+	"pickProjDes": "FieldMeasurement",
+	"pickCstDes": "Bay",
 	"extent": "",
 	"stateSet": "no"
 }

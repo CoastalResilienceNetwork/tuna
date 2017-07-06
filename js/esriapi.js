@@ -51,6 +51,8 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					// Trigger symbolize by click
 					$( "#" + t.id + "symbolizeBy input[value=" + t.obj.symbolizeBy + "]" ).trigger("click");		
 					$( "#" + t.id + "pickHabDes input[value=" + t.obj.pickHabDes + "]" ).trigger("click");		
+					$( "#" + t.id + "pickProjDes input[value=" + t.obj.pickProjDes + "]" ).trigger("click");		
+					$( "#" + t.id + "pickCstDes input[value=" + t.obj.pickCstDes + "]" ).trigger("click");		
 				});
 				// handle map clicks
 				t.map.setMapCursor("pointer")
