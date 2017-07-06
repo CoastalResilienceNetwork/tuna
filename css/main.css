@@ -91,3 +91,23 @@
 .attWrap{
 	display:none;
 }
+.lyr-stats .toggle-btn {
+    margin-left:-8px;
+    margin-right: -8px;
+    margin-bottom: 10px !important;
+    background: #f3f3f3;
+    border-bottom: 1px solid #cdd5d5 !important;
+    border-top: 1px solid #cdd5d5 !important;
+}
+.lyr-stats .toggle-btn label {
+    margin: 8px 5px 0px -6px !important;
+    flex: none !important;
+    padding: 5px 6px !important;
+    border-bottom: none !important;
+}
+.lyr-stats .toggle-btn label:first-of-type, .lyr-stats .toggle-btn label:last-of-type {
+    border-radius: 0 !important;
+}
+.lyr-stats .toggle-btn label:first-of-type, .lyr-stats .toggle-btn label:last-of-type {
+    border-radius: 0 !important;
+}
