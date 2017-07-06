@@ -97,12 +97,12 @@
     margin-bottom: 10px !important;
     background: #f3f3f3;
     border-bottom: 1px solid #cdd5d5 !important;
-    border-top: 1px solid #cdd5d5 !important;
+    border-top: 1px solid #cdd5d5 !important; flex-wrap:wrap;
 }
 .lyr-stats .toggle-btn label {
     margin: 8px 5px 0px -6px !important;
     flex: none !important;
-    padding: 5px 6px !important;
+    padding: 5px 10px !important;
     border-bottom: none !important;
 }
 .lyr-stats .toggle-btn label:first-of-type, .lyr-stats .toggle-btn label:last-of-type {
@@ -120,4 +120,6 @@
 .cstDes{
 	display:none; margin-left:-20px;
 }
-
+.circle{
+	border-radius:50%; width:15px; height:15px; border:1px solid #000; margin-right:3px; margin-top:1px;
+}
