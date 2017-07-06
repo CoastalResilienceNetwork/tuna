@@ -111,9 +111,15 @@
 .lyr-stats .toggle-btn label:first-of-type, .lyr-stats .toggle-btn label:last-of-type {
     border-radius: 0 !important;
 }
-.habDes, .projDes, .cstDes {
-	display:none; 
-{
+/*.habDes{
+	display:none; margin-left:-20px;
+}
+.projDes{
+	display:none; margin-left:-20px;
+}
+.cstDes{
+	display:none; margin-left:-20px;
+}*/
 .circle{
 	border-radius:50%; width:15px; height:15px; border:1px solid #000; margin-right:3px; margin-top:1px;
 }
