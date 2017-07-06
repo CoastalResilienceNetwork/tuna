@@ -123,3 +123,7 @@
 .circle{
 	border-radius:50%; width:15px; height:15px; border:1px solid #000; margin-right:3px; margin-top:1px;
 }
+.top-wrap li{
+	list-style: disc;
+    margin-left: 20px;
+}
