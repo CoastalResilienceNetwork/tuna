@@ -6,7 +6,7 @@ define([
 function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, content, esriapi, clicks, lang ) {
 	return declare(PluginBase, {
 		// The height and width are set here when an infographic is defined. When the user click Continue it rebuilds the app window with whatever you put in.
-		toolbarName: "Natural Defense Projects", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
+		toolbarName: "Migration Explorer", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
 		hasCustomPrint: false, size:'custom', width:400, hasHelp:false, 
 		
 		// First function called when the user clicks the pluging icon. 
@@ -15,7 +15,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 			declare.safeMixin(this, frameworkParameters);
 			// Define object to access global variables from JSON object. Only add variables to varObject.json that are needed by Save and Share. 
 			this.obj = dojo.eval("[" + obj + "]")[0];	
-			this.url = "http://dev.services.coastalresilience.org:6080/arcgis/rest/services/Cities/NaturalDefenseProjects/MapServer";
+			this.url = "http://dev.services.coastalresilience.org:6080/arcgis/rest/services/Shell/migratorySpecies/MapServer";
 			this.layerDefs = [];
 		},
 		// Called after initialize at plugin startup (why the tests for undefined). Also called after deactivate when user closes app by clicking X. 
@@ -86,6 +86,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 			var idUpdate0 = content.replace(/for="/g, 'for="' + this.id);	
 			var idUpdate = idUpdate0.replace(/id="/g, 'id="' + this.id);
 			$('#' + this.id).html(idUpdate);
+			this.clicks.makeVariables(this);			
 			// Create ESRI objects and event listeners	
 			this.esriapi.esriApiFunctions(this);
 			// Click listeners

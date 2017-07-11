@@ -4,133 +4,36 @@ takes the ContentPane id and prepends it to every element with a declared id in 
 The unique ContentPane id makes all the element ids unique and prevents duplicate id errors across other apps.-->
 
 <section id="top-wrap" class="top-wrap">
-	<h3 style="margin-top:10px;">Symbolize Projects By</h3>
-	<div id="symbolizeBy" class="toggle-btn">
-		<input type="radio" id="lyr1" name="lyrnum" value="2"/>
-		<label for="lyr1">Habitat</label>
-		<input type="radio" id="lyr2" name="lyrnum" value="3"/>
-		<label for="lyr2">Project Type</label>
-		<input type="radio" id="lyr3" name="lyrnum" value="4"/>
-		<label for="lyr3">Coastline Type</label>
+	<div class="chosen-wrap" style="margin-bottom:10px; margin-top:10px;">
+		<select data-placeholder="Select Scale" id="selectScale" class="chosen">
+			<option></option>
+			<option value="EEZ">EEZ</option>
+			<option value="MexicanProvince">Mexican Province</option>
+			<option value="USProtractionArea">U.S. Protraction Area</option>
+			<optgroup label="Oil and Gas Subdivisions">
+				<option value="USLeaseBlock">U.S. Lease Block</option>
+			</optgroup>
+		</select>
 	</div>
-	<div id="lyr-stats-2" class="lyr-stats">
-		<!-- <p>Coastal habitats can – and do – provide coastal protection. The level of protection provided depends on the type of habitat and its coastal setting.</p> -->
-		<div id="pickHabDes" class="toggle-btn">
-			<input type="radio" id="hab1" name="habs" value="CoralReef"/>
-			<label for="hab1" style="display:flex;"><div class="circle" style="background:#448BB3;"></div>Coral Reef</label>
-			<input type="radio" id="hab2" name="habs" value="Mangrove"/>
-			<label for="hab2" style="display:flex;"><div class="circle" style="background:#53A650;"></div>Mangrove</label>
-			<input type="radio" id="hab3" name="habs" value="MarshWetland"/>
-			<label for="hab3" style="display:flex;"><div class="circle" style="background:#E6E432;"></div>Marsh Wetland</label><br><br>
-			<input type="radio" id="hab4" name="habs" value="OysterReef"/>
-			<label for="hab4" style="display:flex; margin-top:0px !important;"><div class="circle" style="background:#C7842A;"></div>Oyster Reef</label>
-			<input type="radio" id="hab5" name="habs" value="Seagrass"/>
-			<label for="hab5" style="display:flex; margin-top:0px !important;"><div class="circle" style="background:#5F3A16;"></div>Seagrass</label>
-		</div>
-		<ul class="habDes" id="CoralReef">
-			<li>Diverse underwater ecosystems held together by carbonate reef structures built by colonies of living organisms, mostly in shallow, tropical waters.</li>
-			<li>Coral reefs often occur in areas of high wave energy and they have high potential and value for coastal protection.</li>
-			<li>The Working Group showed that coral reefs can reduce wave heights by up to <b>70%</b>.</li>
-		</ul>
-		<ul class="habDes" id="Mangrove">
-			<li>Inter-tidal, halophytic (salt-loving) trees with distinctive aerial root system, occurring on tropical coastlines.</li>
-			<li>Mangroves are known to attenuate waves and storm surges, trap sediment, build land and thus provide coastal protection.</li>
-			<li>Unlike reefs, mangroves tend to prefer sheltered, low energy coastlines though they do occur on coasts exposed to tropical cyclones and hurricanes.</li>
-			<li>The Coastal Defenses Working Group found that mangroves can reduce wave heights by <b>31%</b>.</li>
-		</ul>
-		<ul class="habDes" id="MarshWetland">
-			<li>Salt marsh wetlands are the temperate equivalent of mangroves.</li>
-			<li>Unlike mangroves, salt marshes comprise flexible grass-like vegetation.</li>
-		 	<li>Like mangroves, salt marshes prefer low wave energy coastlines and can reduce waves and storm surges.</li>
-		 	<li>However, they can occur at very high densities and can reduce wave heights by around <b>70%</b>.</li>
-		</ul>
-		<ul class="habDes" id="OysterReef">
-			<li>Nearshore reef structures built and held together by living oysters.</li>
-			<li>They are structurally similar to coral reefs and attenuate waves similarly to coral reefs, though they tend to occur on relatively sheltered coastlines.</li>
-			<li>Oyster reefs can be engineered and managed and have been implemented in an increasing number of sites around the world, for coastal protection and water quality enhancement.</li>
-		</ul>
-		<ul class="habDes" id="Seagrass">
-			<li>Seagrass and kelp are underwater vegetated ecosystems that occur tropical and temperate coastlines.</li>
-			<li>When they occur in shallower regions, they can attenuate waves by increasing the bed friction of the underlying bathymetry.</li>
-			<li>The Coastal Defenses group found that seagrass and kelp beds can reduce wave heights by more than <b>30%</b>.</li>
-		</ul>
+	<div class="chosen-wrap" id="symByWrap" style="display:none; margin-bottom:10px;">
+		<select data-placeholder="Symbolize By" id="symbolizeBy" class="chosen">
+			<option></option>
+			<option value="AllSpecies">All Species</option>
+			<option value="SeaTurtles">Sea Turtles</option>
+			<option value="Fish">Fish</option>
+			<option value="MarineMammals">Marine Mammals</option>
+			<optgroup label="Specific Species">
+				<option value="BluefinTuna">Bluefin Tuna</option>
+				<option value="BlueMarlin">Blue Marlin</option>
+				<option value="WhaleShark">Whale Shark</option>
+				<option value="BullShark">Bull Shark</option>
+				<option value="AtlanticTarpon">Atlantic Tarpon</option>
+				<option value="GulfSturgeon">Gulf Sturgeon</option>
+				<option value="GreenSeaTurtle">Green Sea Turtle</option>
+				<option value="LoggerheadSeaTurtle">Loggerhead Sea Turtle</option>
+				<option value="KempsRidleySeaTurtle">Kemp’s Ridley Sea Turtle</option>
+				<option value="SpermWhale">Sperm Whale</option>
+			</optgroup>
+		</select>
 	</div>
-	<div id="lyr-stats-3" class="lyr-stats">
-		<div id="pickProjDes" class="toggle-btn">
-			<input type="radio" id="proj1" name="projs" value="FieldMeasurement"/>
-			<label for="proj1" style="display:flex;"><div class="circle" style="background:#FDA829;"></div>Field Measurement</label>
-			<input type="radio" id="proj2" name="projs" value="HabitatRestoration"/>
-			<label for="proj2" style="display:flex;"><div class="circle" style="background:#53A650;"></div>Habitat Restoration</label>
-		</div>
-		<ul class="projDes" id="FieldMeasurement">
-			<li>Field Measurement refers to a direct measurement, in the field, of wave reduction through a habitat.</li>
-			<li>This is achieved by measuring wave heights along 1 or more transects, with the outermost measurement located seaward of the habitat and the innermost measurement located either within or behind the habitat.</li>
-			<li>The Working Group synthesized over 70 such measurements in various habitats to assess their coastal protection potential.</li>
-		</ul>
-		<ul class="projDes" id="HabitatRestoration">
-			<li>Habitat Restoration refers to a project that restored a habitat in order to achieve a coastal protection objective.</li>
-			<li>The Working Group analyzed over 50 such projects that provided information on the costs of restoration of various habitats, and some assessment of the coastal protection benefits achieved through this restoration.</li>
-		</ul>
-	</div>
-	<div id="lyr-stats-4" class="lyr-stats">
-		<div id="pickCstDes" class="toggle-btn">
-			<input type="radio" id="cst1" name="csts" value="Bay"/>
-			<label for="cst1" style="display:flex;"><div class="circle" style="background:#26E5AA;"></div>Bay</label>
-			<input type="radio" id="cst2" name="csts" value="Estuary"/>
-			<label for="cst2" style="display:flex;"><div class="circle" style="background:#1CAAE3;"></div>Estuary</label>
-			<input type="radio" id="cst3" name="csts" value="OpenCoast"/>
-			<label for="cst3" style="display:flex;"><div class="circle" style="background:#0F60E2;"></div>Open Coast</label>
-		</div>
-		<ul class="cstDes" id="Bay">
-			<li>A recessed, partly sheltered body of water that directly connects to a larger body such as a sea or an ocean.</li>
-		</ul>	
-		<ul class="cstDes" id="Estuary">
-			<li>A part of a river where the river meets the sea, characterized by a widening of the river, mixing of fresh and saltwater and riverine and tidal influences.</li>
-		</ul>	
-		<ul class="cstDes" id="OpenCoast">
-			<li>An open stretch of coast, usually exposed to waves that are perpendicular or nearly perpendicular to the shoreline.</li>
-		</ul>	
-	</div>
-</section>
-<section>
-	<h3 style="margin-top:10px;">View Projects By Country</h3>
-	<div class="flex-wrap">
-		<div class="chosen-wrap" style="margin-bottom:10px; margin-left:3px;">
-			<select data-placeholder="Select a Country" id="selectCountry" class="chosen">
-				<option></option>
-			</select>
-		</div>
-	</div>
-	<div class="flex-wrap">	
-		<div class="att-div c-sel">
-			<div id="emiss_redux_1" class="sum-att">XX</div>
-			<div id="ref_yr_1" class="sum-att-label1">Mt CO2e</div> 
-			<div class="sum-label">NDC Reduction Target</div>
-		</div>
-		<div class="att-div c-sel">
-			<div id="emiss_cut" class="sum-att">XX</div>
-			<div class="sum-att-label">Mt CO2e</div> 
-			<div class="sum-label">Emissions Reduction</div>
-		</div>
-		<div class="att-div c-sel">
-			<div id="nscMitPoten" class="sum-att">XX</div>
-			<div class="sum-att-label">Mt CO2e</div>
-			<div class="sum-label">NSC Mitigation Potential</div> 
-		</div>
-	</div>
-</section>
-<section class="atts-section">
-	<h3 style="margin-top:10px;" id="-Project_Title" class="nd_atts">Click Projects for More Info</h3>
-	<div class="attWrap">	
-		<div class="nd_attWrap">
-			<div class="nd_attBox"><div>Habitat: <span id="-Habitat" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
-			<div class="nd_attBox"><div>Project Type: <span id="-Project_Type" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
-			<div class="nd_attBox"><div>Coastline Type: <span id="-Coastline_Type" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
-			<div class="nd_attBox"><div>Habitat Width: <span id="-Habitat_Width" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
-			<div class="nd_attBox"><div>Project Cost: <span id="-Project_Cost" class="nd_attSpan nd_atts" style="color:#5d6165;"></span> (<span id="-Project_Cost_Information" class="nd_attSpan nd_atts" style="color:#5d6165;"></span>)</div></div>
-			<div class="nd_attBox"><div>Percent Wave Reduction: <span id="-F__Wave_Reduction" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
-			<div class="nd_attBox"><div>Reported Benefits: <span id="-Project_Benefit_Information" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div>
-			<!-- <div class="nd_attBox"><div>Photo Credit: <span id="-imgSource" class="nd_attSpan nd_atts" style="color:#5d6165;"></span></div></div> -->
-		</div>
-	</div>	
-</section>
+</section>	
