@@ -1,6 +1,6 @@
 {
     "css": [
-		"plugins/migration-explorer/css/main.css"
+		"plugins/migratorySpecies/css/main.css"
     ],
     "use": {
         "underscore": { "attach": "_" },
