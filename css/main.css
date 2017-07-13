@@ -7,28 +7,19 @@
 
 /* Species table */
 .species-wrap table {
-  font-family: 'Arial';
-  border-collapse: collapse;
-  border: 1px solid #ddd;
-  box-shadow: 0 1px 1px rgba(16,22,26,.2);
-  width:563px;
+  border-collapse:collapse; border:1px solid #ddd; box-shadow:0 1px 1px rgba(16,22,26,.2); width:563px;
 }   
 .species-wrap tr:hover {
-  background:#e1e7eb;
-  cursor:pointer;
+  background:#e1e7eb; cursor:pointer;
 }
 .species-wrap th, .species-wrap td {
-  border: 1px solid #eee;
-  padding: 5px;
-  border-collapse: collapse;
-  font-size: 12px;
+  border-left:1px solid #eee; border-right:1px solid #eee; padding:5px; border-collapse:collapse; font-size:12px; 
 }
+.species-wrap td {
+  border-top:1px solid #999;
+} 
 .species-wrap th {
-  color: #5d6165;
-  background: #f4f4f4;
-  text-transform: uppercase;
-  font-size: 12px;
-  border-bottom: 2px solid #eee;
+  color:#5d6165; background:#f4f4f4; font-size:12px;  
   &.last {
     border-right: none;
   }
@@ -36,13 +27,13 @@
 
 /* Migration graph */
 .migration-wrap{
-  border: 1px solid #ddd; box-shadow: 0 1px 1px rgba(16,22,26,.2); width:563px;
+  border:1px solid #ddd; box-shadow: 0 1px 1px rgba(16,22,26,.2); width:563px;
 }
 .mig-toprow{
-  display:flex; align-items:flex-end; font-weight:bold; font-size:12px; padding:5px;
+  display:flex; align-items:flex-end; font-weight:bold; font-size:12px; padding:5px; background:#f4f4f4;
 }
 .mig-row{
-  display:flex; height:40px; align-items:center; border-top:1pt solid #555; font-size:12px; padding:5px;
+  display:flex; height:40px; align-items:center; border-top:1px solid #999; font-size:12px; padding:5px;
 }
 .mig-row:hover {
   background:#e1e7eb;
@@ -78,5 +69,12 @@
 .mig-3{
   background:#C65B25;
 }
-
-
+.mig-key{
+  display:flex; margin:10px 0px; justify-content:center;
+}
+.mig-leg{
+  margin-top:1px; height:15px; width:15px; border-radius:3px; border:1pt solid #555;
+}
+.mig-leglbl{
+  margin:0px 14px 50px 4px; font-size:12px;
+}

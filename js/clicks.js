@@ -8,16 +8,20 @@ function ( declare, Query, QueryTask ) {
 			eventListeners: function(t){
 				$("#" + t.id + "selectScale").chosen({allow_single_deselect:false, width:"240px"})
 					.change(function(c){
+						// set visible layers
 						t.obj.selectedScale = c.target.value;
 						t.obj.visibleLayers = [ t[t.obj.selectedScale] ];
 						if (t.obj.selectedScale == "USLeaseBlock"){
 							t.obj.visibleLayers.push(t.USProtractionArea)
 						}
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);	
+						// hide chart and table
 						$("#" + t.id + "click-wrap").slideUp();
 						$("#" + t.id + "click-map").html("Click Map for Species Info");
+						// reset symbolize dropdown
 						$("#" + t.id + "symbolizeBy").val("").trigger("chosen:updated")
 						$("#" + t.id + "symByWrap").slideDown();
+						$("#" + t.id + "species-wrap").slideDown();	
 						t.selFtr = -1;
 					});
 				$("#" + t.id + "symbolizeBy").chosen({allow_single_deselect:false, width:"240px"})
@@ -32,24 +36,8 @@ function ( declare, Query, QueryTask ) {
 							t.obj.visibleLayers.push(t.selFtr)
 						}
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-						$("#" + t.id + "species-wrap").slideDown();	
 						t.esriapi.rowClicked(t);
 					});						
-			},
-			commaSeparateNumber: function(val){
-				while (/(\d+)(\d{3})/.test(val.toString())){
-					val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
-				}
-				return val;
-			},
-			roundTo: function(n, digits) {
-				if (digits === undefined) {
-			    	digits = 0;
-			    }
-			    var multiplicator = Math.pow(10, digits);
-				n = parseFloat((n * multiplicator).toFixed(11));
-				var test =(Math.round(n) / multiplicator);
-				return +(test.toFixed(2));
 			}
         });
     }

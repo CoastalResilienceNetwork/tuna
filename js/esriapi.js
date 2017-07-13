@@ -85,6 +85,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 										)	
 									}
 								}
+								console.log("made it")
 								// show table and chart
 								$("#" + t.id + "click-map").html("Species In Selected Area");
 								$("#" + t.id + "click-wrap").slideDown();
