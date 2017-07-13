@@ -82,7 +82,28 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 												"<div class='mig-months mig-" + x.MigChart[10] + "'></div>" + 
 												"<div class='mig-months last-month mig-" + x.MigChart[11] +"'></div>" +
 											"</div>" 
-										)	
+										)
+										// add juvenile chart
+										if (x.MigChartJuv.length > 0){
+											$("#" + t.id + "mig-row-wrap").append(			
+												"<div class='mig-row'>" +
+													"<div class='mig-name'>" + x.Species + "</div>" +
+													"<div class='mig-lifestage'>Juvenile</div>" +
+													"<div class='mig-months first-month mig-" + x.MigChartJuv[0] + "'></div>" +
+													"<div class='mig-months mig-" + x.MigChartJuv[1] + "'></div>" +
+													"<div class='mig-months mig-" + x.MigChartJuv[2] + "'></div>" +
+													"<div class='mig-months mig-" + x.MigChartJuv[3] + "'></div>" +
+													"<div class='mig-months mig-" + x.MigChartJuv[4] + "'></div>" +
+													"<div class='mig-months mig-" + x.MigChartJuv[5] + "'></div>" +
+													"<div class='mig-months mig-" + x.MigChartJuv[6] + "'></div>" +
+													"<div class='mig-months mig-" + x.MigChartJuv[7] + "'></div>" +
+													"<div class='mig-months mig-" + x.MigChartJuv[8] + "'></div>" +
+													"<div class='mig-months mig-" + x.MigChartJuv[9] + "'></div>" + 
+													"<div class='mig-months mig-" + x.MigChartJuv[10] + "'></div>" + 
+													"<div class='mig-months last-month mig-" + x.MigChartJuv[11] +"'></div>" +
+												"</div>" 
+											)
+										}	
 									}
 								}
 								console.log("made it")
