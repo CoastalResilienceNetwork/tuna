@@ -4,36 +4,90 @@ takes the ContentPane id and prepends it to every element with a declared id in 
 The unique ContentPane id makes all the element ids unique and prevents duplicate id errors across other apps.-->
 
 <section id="top-wrap" class="top-wrap">
-	<div class="chosen-wrap" style="margin-bottom:10px; margin-top:10px;">
-		<select data-placeholder="Select Scale" id="selectScale" class="chosen">
-			<option></option>
-			<option value="EEZ">EEZ</option>
-			<option value="MexicanProvince">Mexican Province</option>
-			<option value="USProtractionArea">U.S. Protraction Area</option>
-			<optgroup label="Oil and Gas Subdivisions">
-				<option value="USLeaseBlock">U.S. Lease Block</option>
-			</optgroup>
-		</select>
-	</div>
-	<div class="chosen-wrap" id="symByWrap" style="display:none; margin-bottom:10px;">
-		<select data-placeholder="Symbolize By" id="symbolizeBy" class="chosen">
-			<option></option>
-			<option value="AllSpecies">All Species</option>
-			<option value="SeaTurtles">Sea Turtles</option>
-			<option value="Fish">Fish</option>
-			<option value="MarineMammals">Marine Mammals</option>
-			<optgroup label="Specific Species">
-				<option value="BluefinTuna">Bluefin Tuna</option>
-				<option value="BlueMarlin">Blue Marlin</option>
-				<option value="WhaleShark">Whale Shark</option>
-				<option value="BullShark">Bull Shark</option>
-				<option value="AtlanticTarpon">Atlantic Tarpon</option>
-				<option value="GulfSturgeon">Gulf Sturgeon</option>
-				<option value="GreenSeaTurtle">Green Sea Turtle</option>
-				<option value="LoggerheadSeaTurtle">Loggerhead Sea Turtle</option>
-				<option value="KempsRidleySeaTurtle">Kemp’s Ridley Sea Turtle</option>
-				<option value="SpermWhale">Sperm Whale</option>
-			</optgroup>
-		</select>
-	</div>
+	<h3 style="margin-top:10px">Browse Data</h3>
+	<div style="display:flex; margin-bottom:10px; margin-top:10px;">
+		<div class="chosen-wrap">
+			<select data-placeholder="Select Scale" id="selectScale" class="chosen">
+				<option></option>
+				<optgroup label="Administrative Boundaries">
+					<option value="EEZ">EEZ</option>
+					<option value="MexicanProvince">Mexican Province</option>
+					<option value="USProtractionArea">U.S. Protraction Area</option>
+				</optgroup>
+				<optgroup label="Subdivisions">
+					<option value="USLeaseBlock">U.S. Lease Block</option>
+				</optgroup>
+			</select>
+		</div>
+		<div class="chosen-wrap" id="symByWrap" style="display:none; margin-left:10px;">
+			<select data-placeholder="Symbolize By" id="symbolizeBy" class="chosen">
+				<option></option>
+				<option value="AllSpecies">All Species</option>
+				<option value="SeaTurtles">Sea Turtles</option>
+				<option value="Fish">Fish</option>
+				<option value="MarineMammals">Marine Mammals</option>
+				<optgroup label="Specific Species">
+					<option value="BluefinTuna">Bluefin Tuna</option>
+					<option value="BlueMarlin">Blue Marlin</option>
+					<option value="WhaleShark">Whale Shark</option>
+					<option value="BullShark">Bull Shark</option>
+					<option value="AtlanticTarpon">Atlantic Tarpon</option>
+					<option value="GulfSturgeon">Gulf Sturgeon</option>
+					<option value="GreenSeaTurtle">Green Sea Turtle</option>
+					<option value="LoggerheadSeaTurtle">Loggerhead Sea Turtle</option>
+					<option value="KempsRidleySeaTurtle">Kemp's Ridley Sea Turtle</option>
+					<option value="SpermWhale">Sperm Whale</option>
+				</optgroup>
+			</select>
+		</div>
+	</div>	
+</section>
+<section id="species-wrap" class="species-wrap">	
+	<h3 id="click-map">Click Map for Species Info</h3>
+	<div id="click-wrap" class="click-wrap">	
+		<h4>Movement Density and Protection Status</h4>
+		<table id="speciesTable">
+		  <thead>
+		  	<colgroup>
+		       <col span="1" style="width: 30%;">
+		       <col span="1" style="width: 18%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 18%;">
+		       <col span="1" style="width: 14%;">
+		    </colgroup>
+		    <tr>
+		      <th>Species Name</th>
+		      <th>Movement Density</th>
+		      <th>IUCN</th>
+		      <th>ESA</th>
+		      <th>NOM-059-ECOL</th>
+		      <th>Resolution 160</th>
+		      <!-- <th>Migration Timing</th> -->
+		    </tr>
+		  </thead>
+		  <tbody id="speciesTb">
+		  </tbody>
+		</table>
+		<h4>Migration Periods</h4>
+		<div id="migration-wrap" class="migration-wrap">
+			<div class="mig-toprow">
+				<div class="mig-name">SPECIES</div>
+				<div class="mig-lifestage">LIFESTAGE</div>
+				<div class="mig-months-top">Jan</div>
+				<div class="mig-months-top">Feb</div>
+				<div class="mig-months-top">Mar</div>
+				<div class="mig-months-top">Apr</div>
+				<div class="mig-months-top">May</div>
+				<div class="mig-months-top">Jun</div>
+				<div class="mig-months-top">Jul</div>
+				<div class="mig-months-top">Aug</div>
+				<div class="mig-months-top">Sep</div>
+				<div class="mig-months-top">Oct</div>
+				<div class="mig-months-top">Nov</div>
+				<div class="mig-months-top">Dec</div>
+			</div>
+			<div id="mig-row-wrap"></div>
+		</div>
+	</div>	
 </section>	

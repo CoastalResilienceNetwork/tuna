@@ -5,50 +5,36 @@ function ( declare, Query, QueryTask ) {
         "use strict";
 
         return declare(null, {
-			makeVariables: function(t){
-				// layer IDs
-				t.EEZ = 0;
-				t.MexicanProvince = 1;
-				t.USProtractionArea = 2;
-				t.USLeaseBlock = 3;
-				t.symLayers = { 
-					"USProtractionArea": {   
-						"WhaleShark": 5, "SpermWhale": 6, "LoggerheadSeaTurtle": 7, "KempsRidleySeaTurtle": 8, "GulfSturgeon": 9, 
-						"GreenSeaTurtle": 10, "BullShark": 11, "BlueMarlin": 12, "AtlanticTarpon": 13, "BluefinTuna": 14,
-						"Fish": 15, "SeaTurtles": 16, "MarineMammals": 17, "AllSpecies": 18
-					},
-					"MexicanProvince": {
-						"WhaleShark": 20, "SpermWhale": 21, "LoggerheadSeaTurtle": 22, "KempsRidleySeaTurtle": 23, "GulfSturgeon": 24, 
-						"GreenSeaTurtle": 25, "BullShark": 26, "BlueMarlin": 27, "AtlanticTarpon": 28, "BluefinTuna": 29,
-						"Fish": 30, "SeaTurtles": 31, "MarineMammals": 32, "AllSpecies": 33 
-					},
-					"USLeaseBlock": {
-						"WhaleShark": 35, "SpermWhale": 36, "LoggerheadSeaTurtle": 37, "KempsRidleySeaTurtle": 38, "GulfSturgeon": 39, 
-						"GreenSeaTurtle": 40, "BullShark": 41, "BlueMarlin": 42, "AtlanticTarpon": 43, "BluefinTuna": 44,
-						"Fish": 45, "SeaTurtles": 46, "MarineMammals": 47, "AllSpecies": 48, 
-					}, 
-					"EEZ": {
-						"WhaleShark": 50, "SpermWhale": 51, "LoggerheadSeaTurtle": 52, "KempsRidleySeaTurtle": 53, "GulfSturgeon": 54, 
-						"GreenSeaTurtle": 55, "BullShark": 56, "BlueMarlin": 57, "AtlanticTarpon": 58, "BluefinTuna": 59,
-						"Fish": 60, "SeaTurtles": 61, "AllSpecies": 62, "MarineMammals": 63        
-					} 
-				}
-			},
 			eventListeners: function(t){
 				$("#" + t.id + "selectScale").chosen({allow_single_deselect:false, width:"240px"})
 					.change(function(c){
 						t.obj.selectedScale = c.target.value;
 						t.obj.visibleLayers = [ t[t.obj.selectedScale] ];
+						if (t.obj.selectedScale == "USLeaseBlock"){
+							t.obj.visibleLayers.push(t.USProtractionArea)
+						}
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);	
+						$("#" + t.id + "click-wrap").slideUp();
+						$("#" + t.id + "click-map").html("Click Map for Species Info");
 						$("#" + t.id + "symbolizeBy").val("").trigger("chosen:updated")
 						$("#" + t.id + "symByWrap").slideDown();
+						t.selFtr = -1;
 					});
 				$("#" + t.id + "symbolizeBy").chosen({allow_single_deselect:false, width:"240px"})
 					.change(function(c){
 						t.obj.symbolizeBy = c.target.value;
+						t.sname = $(c.currentTarget).find(":selected").text()
 						t.obj.visibleLayers = [ t.symLayers[t.obj.selectedScale][t.obj.symbolizeBy] ];
-						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);	
-					});					
+						if (t.obj.selectedScale == "USLeaseBlock"){
+							t.obj.visibleLayers.push(t.USProtractionArea)
+						}
+						if (t.selFtr > -1){
+							t.obj.visibleLayers.push(t.selFtr)
+						}
+						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+						$("#" + t.id + "species-wrap").slideDown();	
+						t.esriapi.rowClicked(t);
+					});						
 			},
 			commaSeparateNumber: function(val){
 				while (/(\d+)(\d{3})/.test(val.toString())){
