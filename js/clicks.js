@@ -6,6 +6,9 @@ function ( declare, Query, QueryTask ) {
 
         return declare(null, {
 			eventListeners: function(t){
+				t.map.on("zoom-end", function(){
+					console.log(t.map.getScale())
+				})
 				$("#" + t.id + "selectScale").chosen({allow_single_deselect:true, width:"240px"})
 					.change(function(c){
 						if (c.currentTarget.selectedIndex > 0){
@@ -27,6 +30,7 @@ function ( declare, Query, QueryTask ) {
 							}else{
 								$("#" + t.id + "zoom-to-lease").slideUp();
 							}
+							$("#" + t.id + "symbolizeBy").val(t.obj.symbolizeBy).trigger("chosen:updated").trigger("change");
 						}
 						//hit deselect X
 						else{
