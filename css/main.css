@@ -4,6 +4,12 @@
 .selected-row{
   font-weight:bold; color: #21658c;
 }
+.infoIcon{
+  cursor:pointer; margin-bottom:-3px;
+}
+.zoom-to-lease{
+  margin-left:10px; font-size:12px; display:none;
+}
 
 /* Species table */
 .species-wrap table {
@@ -23,6 +29,12 @@
   &.last {
     border-right: none;
   }
+}
+.explain-table-wrap{
+  display:none; font-size:12px;
+}
+.hideTableInfo{
+  color:blue; cursor:pointer; display:none;
 }
 
 /* Migration graph */

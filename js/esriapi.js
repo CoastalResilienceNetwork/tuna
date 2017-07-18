@@ -56,6 +56,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 										$("#" + t.id + "speciesTb").append(
 											"<tr>" +
 												"<td class='sp-name'>" + x.Species +"</td>" +
+												"<td>" + x.Group + "</td>" +
 												"<td>" + t.atts[y] + "% </td>" +
 												"<td>" + x.IUCN + "</td>" +
 												"<td>" + x.ESA + "</td>" +
