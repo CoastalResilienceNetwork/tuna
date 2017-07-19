@@ -107,9 +107,8 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 										}	
 									}
 								}
-								console.log("made it")
 								// show table and chart
-								$("#" + t.id + "click-map").html("Species In Selected Area");
+								$("#" + t.id + "click-map").html("Species in <span style='color:#3A72B9;'>" + t.atts.Name + "</span>");
 								$("#" + t.id + "click-wrap").slideDown();
 								// update layer visibility
 								t.layerDefs[t.selFtr] = "OBJECTID = " + t.atts.OBJECTID ;

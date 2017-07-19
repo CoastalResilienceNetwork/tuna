@@ -7,6 +7,12 @@
 .infoIcon{
   cursor:pointer; margin-bottom:-3px;
 }
+.hideInfo{
+  color:blue; cursor:pointer; display:none;
+}
+.explain-wrap{
+  display:none; font-size:12px;
+}
 .zoom-to-lease{
   margin-left:10px; font-size:12px; display:none;
 }
@@ -30,12 +36,7 @@
     border-right: none;
   }
 }
-.explain-table-wrap{
-  display:none; font-size:12px;
-}
-.hideTableInfo{
-  color:blue; cursor:pointer; display:none;
-}
+
 
 /* Migration graph */
 .migration-wrap{

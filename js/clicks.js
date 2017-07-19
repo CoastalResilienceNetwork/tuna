@@ -9,7 +9,7 @@ function ( declare, Query, QueryTask ) {
 				t.map.on("zoom-end", function(){
 					console.log(t.map.getScale())
 				})
-				$("#" + t.id + "selectScale").chosen({allow_single_deselect:true, width:"240px"})
+				$("#" + t.id + "selectScale").chosen({allow_single_deselect:true, width:"280px"})
 					.change(function(c){
 						if (c.currentTarget.selectedIndex > 0){
 							// set visible layers
@@ -30,14 +30,17 @@ function ( declare, Query, QueryTask ) {
 							}else{
 								$("#" + t.id + "zoom-to-lease").slideUp();
 							}
-							$("#" + t.id + "symbolizeBy").val(t.obj.symbolizeBy).trigger("chosen:updated").trigger("change");
+							// trigger click on symbolizeBy select if it has a value
+							if (t.obj.symbolizeBy.length > 0){
+								$("#" + t.id + "symbolizeBy").val(t.obj.symbolizeBy).trigger("chosen:updated").trigger("change");
+							}	
 						}
 						//hit deselect X
 						else{
 							// clear visible layers
 							t.obj.visibleLayers = [-1];
 							// reset symbolize dropdown
-							$("#" + t.id + "symbolizeBy").val("").trigger("chosen:updated")
+							$("#" + t.id + "symbolizeBy").val("").trigger("chosen:updated").trigger("change")
 							// hide table and graph
 							$("#" + t.id + "symByWrap").slideUp();
 							$("#" + t.id + "species-wrap").slideUp();
@@ -59,6 +62,16 @@ function ( declare, Query, QueryTask ) {
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 						t.esriapi.rowClicked(t);
 					});	
+				$("#" + t.id + "dataInfo").click(function(){
+					$("#" + t.id + "explain-data-wrap").slideDown();
+					$("#" + t.id + "dataInfo").hide();
+					$("#" + t.id + "hideDataInfo").css("display", "inline");
+				})						
+				$("#" + t.id + "hideDataInfo").click(function(){
+					$("#" + t.id + "explain-data-wrap").slideUp();
+					$("#" + t.id + "dataInfo").show();
+					$("#" + t.id + "hideDataInfo").hide();
+				});		
 				$("#" + t.id + "tableInfo").click(function(){
 					$("#" + t.id + "explain-table-wrap").slideDown();
 					$("#" + t.id + "tableInfo").hide();

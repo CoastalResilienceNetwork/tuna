@@ -4,14 +4,17 @@ takes the ContentPane id and prepends it to every element with a declared id in 
 The unique ContentPane id makes all the element ids unique and prevents duplicate id errors across other apps.-->
 
 <section id="top-wrap" class="top-wrap">
-	<h3 style="margin-top:10px">Browse Data</h3>
+	<h3 style="margin-top:10px">Browse Data <img src="plugins/migratory-blueways/images/info.png" alt="show info about data" class="infoIcon" id="dataInfo"><span id="hideDataInfo" class="hideInfo">Close</span></h3>
+	<div id="explain-data-wrap" class="explain-wrap">
+		<p>Lots of info about the data</p>
+	</div>
 	<div style="display:flex; margin-bottom:10px; margin-top:10px;">
 		<div class="chosen-wrap">
 			<select data-placeholder="Select Scale" id="selectScale" class="chosen">
 				<option></option>
 				<optgroup label="Administrative Boundaries">
 					<option value="EEZ">EEZ</option>
-					<option value="MexicanProvince">Mexican Province</option>
+					<option value="MexicanProvince">Mexico Oil and Geological Provinces</option>
 					<option value="USProtractionArea">U.S. Protraction Area</option>
 				</optgroup>
 				<optgroup label="Subdivisions">
@@ -48,12 +51,12 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 <section id="species-wrap" class="species-wrap">	
 	<h3 id="click-map">Click Map for Species Info</h3>
 	<div id="click-wrap" class="click-wrap">	
-		<h4>Movement Density and Protection Status (click rows to update symbology) <img src="plugins/migratory-blueways/images/info.png" alt="show info about table" class="infoIcon" id="tableInfo"><span id="hideTableInfo" class="hideTableInfo">Close</span></h4>
-		<div id="explain-table-wrap" class="explain-table-wrap">
-			<p><b>IUCN</b>: The International Union for Conservation of Nature is the global authority on that status of the natural world and the measures needed to safeguard it. The IUCN Red List of Threatened Species is the world's most comprehensive information source on the global conservation status of animal, fungi, and plant species. In the IUCN Red List, species may be listed as extinct (EX), extinct in the wild (EW), critically endangered (CR), endangered (EN), vulnerable (VU), near threatened (NT), or lease concern (LC).</p>
-			<p><b>ESA</b>: The Endangered Species Act of 1974 is a U.S. environmental law with a purpose of protecting and recovering imperiled species and the ecosystems upon which they depend. Under the ESA, species may be listed as endangered (EN) or threatened (TH).</p>
-			<p><b>NOM-059-ECOL</b>: The NOM-059-ECOL is Mexico's Native Flora and Fauna Species Protection Rule. Under this policy, species can be listed as "Probablemente extinta en el medio silvestre" (E), "En peligro de extinción" (P), "Amenazadas" (A), or "Sujetas a protección especial" (Pr). This translates to "probably extinct in the wild" (EX), "endangered" (EN), "threatened" (TN), or "subject to special protection" (SP).</p>
-			<p><b>Resolution 160</b>: Cuba's Ministry of Science Technology and Environment (CITMA) passed Resolution 160 of Special Significance in 2013. Species are classified as: Appendix I = endangered or critically endangered species, or Appendix II = vulnerable and species of high ecological value.</p>
+		<h4>Movement Density and Protection Status (click rows to update symbology) <img src="plugins/migratory-blueways/images/info.png" alt="show info about table" class="infoIcon" id="tableInfo"><span id="hideTableInfo" class="hideInfo">Close</span></h4>
+		<div id="explain-table-wrap" class="explain-wrap">
+			<p><b>IUCN</b>: The <a href="http://www.iucnredlist.org/" target="_blank">International Union for Conservation of Nature</a> is the global authority on that status of the natural world and the measures needed to safeguard it. The IUCN Red List of Threatened Species is the world's most comprehensive information source on the global conservation status of animal, fungi, and plant species. In the IUCN Red List, species may be listed as extinct (EX), extinct in the wild (EW), critically endangered (CR), endangered (EN), vulnerable (VU), near threatened (NT), or lease concern (LC).</p>
+			<p><b>ESA</b>: The <a href="https://www.fws.gov/endangered/" target="_blank">Endangered Species Act of 1974</a> is a U.S. environmental law with a purpose of protecting and recovering imperiled species and the ecosystems upon which they depend. Under the ESA, species may be listed as endangered (EN) or threatened (TH).</p>
+			<p><b>NOM-059-ECOL</b>: The <a href="http://www.profepa.gob.mx/innovaportal/file/435/1/NOM_059_SEMARNAT_2010.pdf" target="_blank">NOM-059-ECOL</a> is Mexico's Native Flora and Fauna Species Protection Rule. Under this policy, species can be listed as "Probablemente extinta en el medio silvestre" (E), "En peligro de extinción" (P), "Amenazadas" (A), or "Sujetas a protección especial" (Pr). This translates to "probably extinct in the wild" (EX), "endangered" (EN), "threatened" (TN), or "subject to special protection" (SP).</p>
+			<p><b>Resolution 160</b>: Cuba's Ministry of Science Technology and Environment (CITMA) passed <a href="http://www.medioambiente.cu/legislacion/R-160-11-CITMA.pdf" target="_blank">Resolution 160 of Special Significance</a> in 2013. Species are classified as: Appendix I = endangered or critically endangered species, or Appendix II = vulnerable and species of high ecological value.</p>
 		</div>
 		<table id="speciesTable">
 		  <thead>
