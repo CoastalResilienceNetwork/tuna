@@ -18,6 +18,7 @@ function ( declare, Query, QueryTask ) {
 							if (t.obj.selectedScale == "USLeaseBlock"){
 								t.obj.visibleLayers.push(t.USProtractionArea)
 							}	
+							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 							// hide chart and table
 							$("#" + t.id + "click-wrap").slideUp();
 							$("#" + t.id + "click-map").html("Click Map for Species Info");
@@ -39,6 +40,9 @@ function ( declare, Query, QueryTask ) {
 						else{
 							// clear visible layers
 							t.obj.visibleLayers = [-1];
+							t.selFtr = -1;
+							console.log(t.obj.visibleLayers)
+							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 							// reset symbolize dropdown
 							$("#" + t.id + "symbolizeBy").val("").trigger("chosen:updated").trigger("change")
 							// hide table and graph
@@ -46,7 +50,6 @@ function ( declare, Query, QueryTask ) {
 							$("#" + t.id + "species-wrap").slideUp();
 							$("#" + t.id + "zoom-to-lease").slideUp();
 						}
-						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 					});
 				$("#" + t.id + "symbolizeBy").chosen({allow_single_deselect:false, width:"240px"})
 					.change(function(c){
