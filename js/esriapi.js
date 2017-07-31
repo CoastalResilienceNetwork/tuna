@@ -51,6 +51,10 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 								for (var i in t.speciesMeta){
 									if (t.atts[i] == 1){
 										var x = t.speciesMeta[i];
+										var lifestage = "N/A";
+										if (x.Group == "Sea Turtle"){
+											lifestage = "Adult Female";
+										}
 										var y = i + "_MD";
 										// add table rows
 										$("#" + t.id + "speciesTb").append(
@@ -69,7 +73,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 										$("#" + t.id + "mig-row-wrap").append(			
 											"<div class='mig-row'>" +
 												"<div class='mig-name'>" + x.Species + "</div>" +
-												"<div class='mig-lifestage'>Adult Female</div>" +
+												"<div class='mig-lifestage'>" + lifestage + "</div>" +
 												"<div class='mig-months first-month mig-" + x.MigChart[0] + "'></div>" +
 												"<div class='mig-months mig-" + x.MigChart[1] + "'></div>" +
 												"<div class='mig-months mig-" + x.MigChart[2] + "'></div>" +
