@@ -94,3 +94,8 @@
 .mig-leglbl{
   margin:0px 14px 50px 4px; font-size:12px;
 }
+
+/*close button color for popup*/
+.tclose{
+  color:#000 !important;
+}
