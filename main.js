@@ -26,6 +26,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 		},
 		// Called after hibernate at app startup. Calls the render function which builds the plugins elements and functions.   
 		activate: function (showHelpOnStart) {
+			$('.sidebar-nav .nav-title').css("margin-left", "25px");
 			if (this.rendered == false) {
 				this.rendered = true;							
 				this.render();
@@ -38,6 +39,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 		},
 		// Called when user hits the minimize '_' icon on the pluging. Also called before hibernate when users closes app by clicking 'X'.
 		deactivate: function () {
+			$('.sidebar-nav .nav-title').css("margin-left", "0px");
 			this.open = "no";	
 		},	
 		// Called when user hits 'Save and Share' button. This creates the url that builds the app at a given state using JSON. 
@@ -72,6 +74,16 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 			this.clicks = new clicks();
 			this.variables = new variables();
 			// ADD HTML TO APP
+			$(this.container).parent().append('<button id="viewMbInfoGraphicIcon" class="button button-default ig-icon"><img src="plugins/migratory-blueways/images/InfographicIcon_v1_23x23.png" alt="show overview graphic"></button>')
+			$(this.container).parent().find("#viewMbInfoGraphicIcon").on('click',function(c){
+				TINY.box.show({
+					animate: true,
+					url: 'plugins/migratory-blueways/html/info-graphic.html',
+					fixed: true,
+					width: 800,
+					height: 601
+				});
+			})
 			// Define Content Pane as HTML parent		
 			this.appDiv = new ContentPane({style:'padding:8px; flex:1; display:flex; flex-direction:column; height:100%;'});
 			this.id = this.appDiv.id
