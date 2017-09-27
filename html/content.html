@@ -1,0 +1,122 @@
+﻿<!--This HTML is used in the render function to build the elements within the plugin. The render function first creates a
+Dijit ContentPane to hold all the elements. The ContentPane is assigned a dynamic id upon creation. The render function
+takes the ContentPane id and prepends it to every element with a declared id in this HTML before the elements are created.
+The unique ContentPane id makes all the element ids unique and prevents duplicate id errors across other apps.-->
+
+<section id="top-wrap" class="top-wrap">
+	<h3 style="margin-top:10px">Browse Data <img src="plugins/migratory-blueways/images/info.png" alt="show info about data" class="infoIcon" id="dataInfo"><span id="hideDataInfo" class="hideInfo">Close</span></h3>
+	<div id="explain-data-wrap" class="explain-wrap">
+		<p>PLEASE NOTE that these data products were created using available data tracks, which are limited. While some corridors incorporated over 100 animal tracks, some have incorporated as few as 10. This is critical to note when drawing conclusions from our data products. These data products are a work in progress, and the information in this tool will be continually updated and improved over time.</p>
+		<p>Other notes:
+			<ul style="list-style-type:disc">
+				<li>The movement density layers are computed by averaging available animal tracking satellite data.</li>
+				<li>EEZ stands for Exclusive Economic Zone. Each country has jurisdiction over their EEZ and special rights for the exploration and use of marine resources within this zone.</li>
+				<li>The U.S. Lease Blocks are a subdivision of U.S. Protraction Areas, shown here to give a finer scale look at migratory species. The Nature Conservancy plans to identify similar relevant layers in Mexico and Cuba, in order to provide this finer scale information throughout the Gulf.</li>
+				<li>The Mexico Oil and Geological Provinces layer was created by merging Mexico Oil Provinces and Mexico Geological Provinces. Since the two boundaries are very similar, there are only a few new sections created by merging the two. They are labelled with both names in this tool.</li>
+				<li>The movement density layer for U.S. Protraction Areas, U.S. Lease Blocks, and Mexico Oil and Geological Provinces was calculated as an average density within each administrative boundary unit. For the EEZ layer, the movement densities were summed within each EEZ and divided by the total between the three EEZs, normalizing the data so that each EEZ represents a percentage of the total three areas (U.S. EEZ + Mexico EEZ + Cuba EEZ = 100%).</li>
+			</ul>
+		</p>
+	</div>
+	<div style="display:flex; margin-bottom:10px; margin-top:10px;">
+		<div class="chosen-wrap">
+			<select data-placeholder="Select Scale" id="selectScale" class="chosen">
+				<option></option>
+				<optgroup label="Federal Administrative Boundaries">
+					<option value="EEZ">Exclusive Economic Zones (EEZ)</option>
+					<option value="MexicanProvince">Mexico Oil and Geological Provinces</option>
+					<option value="USProtractionArea">U.S. Protraction Areas</option>
+				</optgroup>
+				<optgroup label="U.S. Subdivisions">
+					<option value="USLeaseBlock">U.S. Lease Blocks</option>
+				</optgroup>
+			</select>
+		</div>
+		<div class="chosen-wrap" id="symByWrap" style="display:none; margin-left:10px;">
+			<select data-placeholder="Symbolize By" id="symbolizeBy" class="chosen">
+				<option></option>
+				<option value="AllSpecies">All Species</option>
+				<option value="SeaTurtles">Sea Turtles</option>
+				<option value="Fish">Fish</option>
+				<option value="MarineMammals">Marine Mammals</option>
+				<optgroup label="Specific Species">
+					<option value="BluefinTuna">Bluefin Tuna</option>
+					<option value="BlueMarlin">Blue Marlin</option>
+					<option value="WhaleShark">Whale Shark</option>
+					<option value="BullShark">Bull Shark</option>
+					<option value="AtlanticTarpon">Atlantic Tarpon</option>
+					<option value="GulfSturgeon">Gulf Sturgeon</option>
+					<option value="GreenSeaTurtle">Green Sea Turtle</option>
+					<option value="LoggerheadSeaTurtle">Loggerhead Sea Turtle</option>
+					<option value="KempsRidleySeaTurtle">Kemp's Ridley Sea Turtle</option>
+					<option value="SpermWhale">Sperm Whale</option>
+				</optgroup>
+			</select>
+		</div>
+	</div>	
+	<div id="zoom-to-lease" class="zoom-to-lease">
+		Zoom in to view U.S. Lease Blocks
+	</div>
+</section>
+<section id="species-wrap" class="species-wrap">	
+	<h3 id="click-map">Click Map for Species Info</h3>
+	<div id="click-wrap" class="click-wrap">	
+		<h4>Movement Density and Protection Status (click rows to update symbology) <img src="plugins/migratory-blueways/images/info.png" alt="show info about table" class="infoIcon" id="tableInfo"><span id="hideTableInfo" class="hideInfo">Close</span></h4>
+		<div id="explain-table-wrap" class="explain-wrap">
+			<p><b>IUCN</b>: The <a href="http://www.iucnredlist.org/" target="_blank">International Union for Conservation of Nature</a> is the global authority on that status of the natural world and the measures needed to safeguard it. The IUCN Red List of Threatened Species is the world's most comprehensive information source on the global conservation status of animal, fungi, and plant species. In the IUCN Red List, species may be listed as extinct (EX), extinct in the wild (EW), critically endangered (CR), endangered (EN), vulnerable (VU), near threatened (NT), or least concern (LC).</p>
+			<p><b>ESA</b>: The <a href="https://www.fws.gov/endangered/" target="_blank">Endangered Species Act of 1974</a> is a U.S. environmental law with a purpose of protecting and recovering imperiled species and the ecosystems upon which they depend. Under the ESA, species may be listed as endangered (EN) or threatened (TH).</p>
+			<p><b>NOM-059-ECOL</b>: The <a href="http://www.profepa.gob.mx/innovaportal/file/435/1/NOM_059_SEMARNAT_2010.pdf" target="_blank">NOM-059-ECOL</a> is Mexico's Native Flora and Fauna Species Protection Rule. Under this policy, species can be listed as "Probablemente extinta en el medio silvestre" (E), "En peligro de extinción" (P), "Amenazadas" (A), or "Sujetas a protección especial" (Pr). This translates to "probably extinct in the wild" (EX), "endangered" (EN), "threatened" (TN), or "subject to special protection" (SP).</p>
+			<p><b>Resolution 160</b>: Cuba's Ministry of Science Technology and Environment (CITMA) passed <a href="http://www.medioambiente.cu/legislacion/R-160-11-CITMA.pdf" target="_blank">Resolution 160 of Special Significance</a> in 2013. Species are classified as: Appendix I = endangered or critically endangered species, or Appendix II = vulnerable and species of high ecological value.</p>
+		</div>
+		<table id="speciesTable">
+		  <thead>
+		  	<colgroup>
+		       <col span="1" style="width: 30%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 14%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 14%;">
+		       <col span="1" style="width: 12%;">
+		    </colgroup>
+		    <tr>
+		      <th>Species Name</th>
+		      <th>Group</th>
+		      <th>Movement Density</th>
+		      <th>IUCN</th>
+		      <th>ESA</th>
+		      <th>NOM-059-ECOL</th>
+		      <th>Resolution 160</th>
+		      <!-- <th>Migration Timing</th> -->
+		    </tr>
+		  </thead>
+		  <tbody id="speciesTb">
+		  </tbody>
+		</table>
+		<h4>Migration Periods (click rows to update symbology)</h4>
+		<div id="migration-wrap" class="migration-wrap">
+			<div class="mig-toprow">
+				<div class="mig-name">Species</div>
+				<div class="mig-lifestage">Lifestage</div>
+				<div class="mig-months-top">Jan</div>
+				<div class="mig-months-top">Feb</div>
+				<div class="mig-months-top">Mar</div>
+				<div class="mig-months-top">Apr</div>
+				<div class="mig-months-top">May</div>
+				<div class="mig-months-top">Jun</div>
+				<div class="mig-months-top">Jul</div>
+				<div class="mig-months-top">Aug</div>
+				<div class="mig-months-top">Sep</div>
+				<div class="mig-months-top">Oct</div>
+				<div class="mig-months-top">Nov</div>
+				<div class="mig-months-top">Dec</div>
+			</div>
+			<div id="mig-row-wrap"></div>
+		</div>
+		<div class="mig-key">
+			<div class="mig-leg mig-0"></div><div class="mig-leglbl">In foraging areas</div>
+			<div class="mig-leg mig-3"></div><div class="mig-leglbl">Spawning or at nesting beaches</div>
+			<div class="mig-leg mig-2"></div><div class="mig-leglbl">Migration period</div>
+			<div class="mig-leg mig-1"></div><div class="mig-leglbl">Feeding</div>
+		</div>
+	</div>	
+</section>	
