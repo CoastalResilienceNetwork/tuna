@@ -6,7 +6,7 @@ define([
 function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, content, esriapi, clicks, variables, lang ) {
 	return declare(PluginBase, {
 		// The height and width are set here when an infographic is defined. When the user click Continue it rebuilds the app window with whatever you put in.
-		toolbarName: "Oil and Gas Activity Planning", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
+		toolbarName: "Tuna Fisheries", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
 		hasCustomPrint: false, size:'custom', width:594, hasHelp:false, 
 		
 		// First function called when the user clicks the pluging icon. 
@@ -15,7 +15,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 			declare.safeMixin(this, frameworkParameters);
 			// Define object to access global variables from JSON object. Only add variables to varObject.json that are needed by Save and Share. 
 			this.obj = dojo.eval("[" + obj + "]")[0];	
-			this.url = "http://dev.services.coastalresilience.org:6080/arcgis/rest/services/Gulf_of_Mexico/Migratory_Blueways/MapServer";
+			this.url = "http://dev.services.coastalresilience.org:6080/arcgis/rest/services/Gulf_of_Mexico/TunaFisheries/MapServer";
 		},
 		// Called after initialize at plugin startup (why the tests for undefined). Also called after deactivate when user closes app by clicking X. 
 		hibernate: function () {
@@ -74,11 +74,11 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 			this.clicks = new clicks();
 			this.variables = new variables();
 			// ADD HTML TO APP
-			$(this.container).parent().append('<button id="viewMbInfoGraphicIcon" class="button button-default ig-icon"><img src="plugins/migratory-blueways/images/InfographicIcon_v1_23x23.png" alt="show overview graphic"></button>')
+			$(this.container).parent().append('<button id="viewMbInfoGraphicIcon" class="button button-default ig-icon"><img src="plugins/tuna-fisheries/images/InfographicIcon_v1_23x23.png" alt="show overview graphic"></button>')
 			$(this.container).parent().find("#viewMbInfoGraphicIcon").on('click',function(c){
 				TINY.box.show({
 					animate: true,
-					url: 'plugins/migratory-blueways/html/info-graphic.html',
+					url: 'plugins/tuna-fisheries/html/info-graphic.html',
 					fixed: true,
 					width: 800,
 					height: 601
