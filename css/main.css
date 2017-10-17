@@ -33,7 +33,7 @@
     display:flex; flex-wrap:wrap; border:1pt solid #cdd5d5; box-shadow:0 1px 1px rgba(16,22,26,.2); width:557px; border-top:none;
 }
 .hl-info-box {
-  position:relative; flex:1; padding:5px;
+  position:relative; flex:1; padding:5px; margin-top:7px;
 }
 .hl-info-attribute {
     color:#5E94B6; margin-bottom:2px;
