@@ -18,7 +18,7 @@ function ( declare, Query, QueryTask ) {
 							$("#" + t.id + "click-map").html("Click Map for Species Info");
 							
 							$("#" + t.id + "symByWrap").slideDown();
-							$("#" + t.id + "species-wrap").slideDown();	
+							$("#" + t.id + "tuna-wrap").slideDown();	
 							t.selFtr = -1;
 							// trigger click on symbolizeBy select if it has a value
 							if (t.obj.symbolizeBy.length > 0){
@@ -35,7 +35,7 @@ function ( declare, Query, QueryTask ) {
 							$("#" + t.id + "symbolizeBy").val("").trigger("chosen:updated").trigger("change")
 							// hide table and graph
 							$("#" + t.id + "symByWrap").slideUp();
-							$("#" + t.id + "species-wrap").slideUp();
+							$("#" + t.id + "tuna-wrap").slideUp();
 							$("#" + t.id + "zoom-to-lease").slideUp();
 						}
 					});

@@ -1,7 +1,7 @@
 .ig-icon{
   padding:2px !important; height:28px; position:absolute; top:6px; margin-left:4px; z-index:2600;
 }
-.click-wrap, .species-wrap{
+.click-wrap, .tuna-wrap{
   display:none;
 }
 .selected-row{
@@ -23,7 +23,7 @@
   display:none;
 }
 
-.species-wrap .toggle-btn{
+.tuna-wrap .toggle-btn{
   width:563px; margin-bottom:-6px;
 }
 
@@ -64,16 +64,16 @@
 
 
 /* Species and regulations tables */
-.species-wrap table {
+.tuna-wrap table {
   border-collapse:collapse; border:1px solid #ddd; box-shadow:0 1px 1px rgba(16,22,26,.2); width:563px;
 }   
-.species-wrap th, .species-wrap td {
+.tuna-wrap th, .tuna-wrap td {
   border-left:1px solid #eee; border-right:1px solid #eee; padding:5px; border-collapse:collapse; font-size:12px; 
 }
-.species-wrap td {
+.tuna-wrap td {
   border-top:1px solid #999;
 } 
-.species-wrap th {
+.tuna-wrap th {
   color:#5d6165; background:#f4f4f4; font-size:12px;  
   &.last {
     border-right: none;
