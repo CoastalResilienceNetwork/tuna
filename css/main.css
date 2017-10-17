@@ -11,7 +11,7 @@
   cursor:pointer; margin-bottom:-3px;
 }
 .hideInfo{
-  color:blue; cursor:pointer; display:none;
+  cursor:pointer; display:none; margin-bottom:-3px;
 }
 .explain-wrap{
   display:none; font-size:12px;
@@ -19,13 +19,56 @@
 .zoom-to-lease{
   margin-left:10px; font-size:12px; display:none;
 }
+.hideClass{
+  display:none;
+}
 
-/* Species table */
+.species-wrap .toggle-btn{
+  width:563px; margin-bottom:-6px;
+}
+
+
+/* high level info */
+.hl-info-wrap {
+    display:flex; flex-wrap:wrap; border:1pt solid #cdd5d5; box-shadow:0 1px 1px rgba(16,22,26,.2); width:557px; border-top:none;
+}
+.hl-info-box {
+  position:relative; flex:1; padding:5px;
+}
+.hl-info-attribute {
+    color:#5E94B6; margin-bottom:2px;
+}
+.hl-info-attributeSpan{
+  font-weight:bold;
+}
+
+/* IUCN Attributes */
+.iucn-attributes{
+  padding:5px;
+}
+.iucn-attribute{
+  margin-bottom:10px; color:#5E94B6;
+}
+.iucn-attribute{
+  font-weight:bold;
+ }
+.iucn-attributeSpan{
+  font-weight:normal;
+ } 
+.iucn-flex{
+  display:flex; flex-wrap:wrap;
+}
+.iucn-flex .iucn-attribute{
+  flex:1; margin-bottom:4px; font-weight:bold; min-width:200px;
+}
+
+
+/* Species and regulations tables */
 .species-wrap table {
   border-collapse:collapse; border:1px solid #ddd; box-shadow:0 1px 1px rgba(16,22,26,.2); width:563px;
 }   
 .species-wrap tr:hover {
-  background:#e1e7eb; cursor:pointer;
+  /*background:#e1e7eb; cursor:pointer;*/
 }
 .species-wrap th, .species-wrap td {
   border-left:1px solid #eee; border-right:1px solid #eee; padding:5px; border-collapse:collapse; font-size:12px; 
@@ -40,7 +83,6 @@
   }
 }
 
-
 /* Migration graph */
 .migration-wrap{
   border:1px solid #ddd; box-shadow: 0 1px 1px rgba(16,22,26,.2); width:563px;
@@ -52,20 +94,20 @@
   display:flex; height:40px; align-items:center; border-top:1px solid #999; font-size:12px; padding:5px;
 }
 .mig-row:hover {
-  background:#e1e7eb;
-  cursor:pointer;
+/*  background:#e1e7eb;
+  cursor:pointer;*/
 }
 .mig-name{
-  margin-right:6px; width:90px;
+  margin-right:6px; width:136px;
 }
 .mig-lifestage{
   margin-right:6px; width:70px;
 }
 .mig-months-top{
-  width:33px; text-align:center;
+  width:57px; text-align:center;
 }
 .mig-months{
-  height:20px; width:33px; border-top:1pt solid #555; border-bottom:1pt solid #555;
+  height:20px; width:57px; border-top:1pt solid #555; border-bottom:1pt solid #555;
 }
 .first-month{
   border-left:1pt solid #555; border-top-left-radius:3px; border-bottom-left-radius:3px;
@@ -86,13 +128,13 @@
   background:#C65B25;
 }
 .mig-key{
-  display:flex; margin:10px 0px; justify-content:center;
+  display:flex; margin-top:4px; justify-content:center;
 }
 .mig-leg{
   margin-top:1px; height:15px; width:15px; border-radius:3px; border:1pt solid #555;
 }
 .mig-leglbl{
-  margin:0px 14px 50px 4px; font-size:12px;
+  margin:0px 14px 5px 4px; font-size:12px;
 }
 
 /*close button color for popup*/

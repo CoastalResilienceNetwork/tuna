@@ -18,6 +18,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 				t.dynamicLayer.on("load", function () { 			
 					t.layersArray = t.dynamicLayer.layerInfos;
 					if (t.obj.stateSet == "no"){
+						console.log("made it")
 						var ext = t.dynamicLayer.fullExtent;
 						t.map.setExtent(ext, true);
 					}
@@ -29,6 +30,31 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 						t.obj.stateSet = "no";
 					}	
 				});	
+				//query regulatory table
+				var q = new Query();
+				var qt = new QueryTask(t.url + "/" + t.Regulations );
+				q.where = "OBJECTID > -1";
+				q.returnGeometry = false;
+				q.outFields = ["*"];
+				var c = [];
+				qt.execute(q, function(e){
+					$.each(e.features, function(i,v){
+						t.RegObj.push(v.attributes)
+					})		
+				});
+				//query species table
+				var q = new Query();
+				var qt = new QueryTask(t.url + "/" + t.SpeciesData );
+				q.where = "OBJECTID > -1";
+				q.returnGeometry = false;
+				q.outFields = ["*"];
+				var c = [];
+				qt.execute(q, function(e){
+					$.each(e.features, function(i,v){
+						t.SpecObj.push(v.attributes)
+					})
+				});
+				// map clicks
 				t.map.setMapCursor("pointer");
 				t.map.on('click',function(c){
 					if (t.open == "yes"){
@@ -43,76 +69,62 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 							var index = t.obj.visibleLayers.indexOf(t.selFtr);
 							if (e.features.length > 0){
 								// clear table and chart
-								$("#" + t.id + "speciesTb").empty();
 								$("#" + t.id + "speciesBox").empty();
-								$("#" + t.id + "mig-row-wrap").empty();
+								
+								t.selRegSpecies = [];
 								// capture atts
 								t.atts = e.features[0].attributes;
-								for (var i in t.speciesMeta){
-									if (t.atts[i] == 1){
-										var x = t.speciesMeta[i];
-										var lifestage = "N/A";
-										if (x.Group == "Sea Turtle"){
-											lifestage = "Adult Female";
-										}
-										var y = i + "_MD";
-										// add table rows
-										$("#" + t.id + "speciesTb").append(
-											"<tr>" +
-												"<td class='sp-name'>" + x.Species +"</td>" +
-												"<td>" + x.Group + "</td>" +
-												"<td>" + t.atts[y] + "% </td>" +
-												"<td>" + x.IUCN + "</td>" +
-												"<td>" + x.ESA + "</td>" +
-												"<td>" + x.NOM + "</td>" +
-												"<td>" + x.Res + "</td>" +
-												// "<td>" + x.MigTiming + "</td>" +
-											"</tr>"
-										)
-										// build chart
-										$("#" + t.id + "mig-row-wrap").append(			
-											"<div class='mig-row'>" +
-												"<div class='mig-name'>" + x.Species + "</div>" +
-												"<div class='mig-lifestage'>" + lifestage + "</div>" +
-												"<div class='mig-months first-month mig-" + x.MigChart[0] + "'></div>" +
-												"<div class='mig-months mig-" + x.MigChart[1] + "'></div>" +
-												"<div class='mig-months mig-" + x.MigChart[2] + "'></div>" +
-												"<div class='mig-months mig-" + x.MigChart[3] + "'></div>" +
-												"<div class='mig-months mig-" + x.MigChart[4] + "'></div>" +
-												"<div class='mig-months mig-" + x.MigChart[5] + "'></div>" +
-												"<div class='mig-months mig-" + x.MigChart[6] + "'></div>" +
-												"<div class='mig-months mig-" + x.MigChart[7] + "'></div>" +
-												"<div class='mig-months mig-" + x.MigChart[8] + "'></div>" +
-												"<div class='mig-months mig-" + x.MigChart[9] + "'></div>" + 
-												"<div class='mig-months mig-" + x.MigChart[10] + "'></div>" + 
-												"<div class='mig-months last-month mig-" + x.MigChart[11] +"'></div>" +
-											"</div>" 
-										)
-										// add juvenile chart
-										if (x.MigChartJuv.length > 0){
-											$("#" + t.id + "mig-row-wrap").append(			
-												"<div class='mig-row'>" +
-													"<div class='mig-name'>" + x.Species + "</div>" +
-													"<div class='mig-lifestage'>Juvenile</div>" +
-													"<div class='mig-months first-month mig-" + x.MigChartJuv[0] + "'></div>" +
-													"<div class='mig-months mig-" + x.MigChartJuv[1] + "'></div>" +
-													"<div class='mig-months mig-" + x.MigChartJuv[2] + "'></div>" +
-													"<div class='mig-months mig-" + x.MigChartJuv[3] + "'></div>" +
-													"<div class='mig-months mig-" + x.MigChartJuv[4] + "'></div>" +
-													"<div class='mig-months mig-" + x.MigChartJuv[5] + "'></div>" +
-													"<div class='mig-months mig-" + x.MigChartJuv[6] + "'></div>" +
-													"<div class='mig-months mig-" + x.MigChartJuv[7] + "'></div>" +
-													"<div class='mig-months mig-" + x.MigChartJuv[8] + "'></div>" +
-													"<div class='mig-months mig-" + x.MigChartJuv[9] + "'></div>" + 
-													"<div class='mig-months mig-" + x.MigChartJuv[10] + "'></div>" + 
-													"<div class='mig-months last-month mig-" + x.MigChartJuv[11] +"'></div>" +
-												"</div>" 
-											)
+								var regs = t.atts.FINALreg.split(", ");
+								var spPres = [];
+								t.efhPres = {};
+								$.each(t.speciesCodes,function(i,v){
+									var f = "Max_" + v + "_IUCN";
+									if (t.atts[f] == 1){
+										spPres.push(v)
+									}
+									var g = "EFH_" +  v;
+									var str = "";
+									if (t.atts[g]){
+										if (t.atts[g].length > 0){
+											str = t.atts[g].replace("JUV", "Juvenile").replace("SEL", "Spawning Egg Larve").replace("ADU", "Adult")
+											t.efhPres[t.speciesCodes1[v]] = str
 										}	
 									}
+								})
+								$("#" + t.id + "speciesToggle label").addClass("hideClass")
+								$.each(t.RegObj,function(i,v){
+									var code = v.CODE;
+									var species = v.SPECIES;
+									$.each(regs,function(j,w){
+										if (w == code){
+											$.each(spPres,function(k,x){
+												if (x == species){
+													t.selRegSpecies.push(v);
+													var inId = $("#" + t.id + "speciesToggle input[value='" + v.SpecName + "']").attr("id");
+													$("label[for='"+ inId +"']").removeClass("hideClass")
+												}
+											})
+										}
+									})
+								})
+								var selsp = $("#" + t.id + "speciesToggle input[value='" + t.obj.selectedSpecies + "']").attr("id")
+								if ( !$("label[for='"+ selsp +"']").hasClass("hideClass") ){
+									$("#" + selsp).trigger("click")
+								}else{
+									$.each($("#" + t.id + "speciesToggle label"),function(i,v){
+										if ( !$(v).hasClass("hideClass") ){
+											var cid = $(v).attr("for")
+											$("#" + cid).trigger("click")
+											return false
+										}
+									})								
 								}
+
+
+
+						
 								// show table and chart
-								$("#" + t.id + "click-map").html("Species in <span style='color:#3A72B9;'>" + t.atts.Name + "</span>");
+								$("#" + t.id + "click-map").html("Species in Selected Area") // <span style='color:#3A72B9;'>" + t.atts.GeoName + "</span>");
 								$("#" + t.id + "click-wrap").slideDown();
 								// update layer visibility
 								t.layerDefs[t.selFtr] = "OBJECTID = " + t.atts.OBJECTID ;
@@ -120,13 +132,6 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 								if (index == -1){
 								 	t.obj.visibleLayers.push(t.selFtr);
 								}
-								// click listener for table rows
-								$("#" + t.id + "speciesTb tr").click(function(c){
-									t.sname = $(c.currentTarget).find(".sp-name").html();
-									var tmp = t.sname.replace(/\s+/g, '')
-									t.obj.symbolizeBy = tmp.replace(/'/g, '')
-									$("#" + t.id + "symbolizeBy").val(t.obj.symbolizeBy).trigger("chosen:updated").trigger("change");
-								})	
 								// click listener chart rows
 								$("#" + t.id + " .mig-row").click(function(c){
 									t.sname = $(c.currentTarget).find(".mig-name").html();
@@ -155,20 +160,20 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 			},
 			// hightlight species name in chart and table if symbolized by on map
 			rowClicked: function(t){
-				$("#" + t.id + " .mig-name").each(function(i,v){
-					if ( $(v).html()  == t.sname ){
-						$(v).addClass("selected-row")
-					}else(
-						$(v).removeClass("selected-row")	
-					)
-				})
-				$("#" + t.id + " .sp-name").each(function(i,v){
-					if ( $(v).html()  == t.sname ){
-						$(v).addClass("selected-row")
-					}else(
-						$(v).removeClass("selected-row")	
-					)
-				})
+				// $("#" + t.id + " .mig-name").each(function(i,v){
+				// 	if ( $(v).html()  == t.sname ){
+				// 		$(v).addClass("selected-row")
+				// 	}else(
+				// 		$(v).removeClass("selected-row")	
+				// 	)
+				// })
+				// $("#" + t.id + " .sp-name").each(function(i,v){
+				// 	if ( $(v).html()  == t.sname ){
+				// 		$(v).addClass("selected-row")
+				// 	}else(
+				// 		$(v).removeClass("selected-row")	
+				// 	)
+				// })
 			}				
 		});
     }
