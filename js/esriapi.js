@@ -124,7 +124,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 						
 								// show table and chart
 								$("#" + t.id + "click-map").html("Species in Selected Area") // <span style='color:#3A72B9;'>" + t.atts.GeoName + "</span>");
-								$("#" + t.id + "click-wrap").slideDown();
+								$("#" + t.id + "tclick-wrap").slideDown();
 								// update layer visibility
 								t.layerDefs[t.selFtr] = "OBJECTID = " + t.atts.OBJECTID ;
 								t.dynamicLayer.setLayerDefinitions(t.layerDefs);
@@ -132,21 +132,19 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 								 	t.obj.visibleLayers.push(t.selFtr);
 								}
 								// click listener chart rows
-								$("#" + t.id + " .mig-row").click(function(c){
-									t.sname = $(c.currentTarget).find(".mig-name").html();
+								$("#" + t.id + " .t-mig-row").click(function(c){
+									t.sname = $(c.currentTarget).find(".t-mig-name").html();
 									var tmp = t.sname.replace(/\s+/g, '')
 									t.obj.symbolizeBy = tmp.replace(/'/g, '')
 									$("#" + t.id + "symbolizeBy").val(t.obj.symbolizeBy).trigger("chosen:updated").trigger("change");
 								})
-								// highlight species in chart and table if symbolized
-								t.esriapi.rowClicked(t);
 							}else{
 								// nothing clicked - remove selected layer if visible
 								if (index > -1){
 								 	t.obj.visibleLayers.splice(index,1)
 								}
 								// hide chart and table
-								$("#" + t.id + "click-wrap").slideUp();
+								$("#" + t.id + "tclick-wrap").slideUp();
 								$("#" + t.id + "click-map").html("Click Map for Species Info");
 								t.selFtr = -1;
 							}
@@ -156,24 +154,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 						})	
 					}
 				})	
-			},
-			// hightlight species name in chart and table if symbolized by on map
-			rowClicked: function(t){
-				// $("#" + t.id + " .mig-name").each(function(i,v){
-				// 	if ( $(v).html()  == t.sname ){
-				// 		$(v).addClass("selected-row")
-				// 	}else(
-				// 		$(v).removeClass("selected-row")	
-				// 	)
-				// })
-				// $("#" + t.id + " .sp-name").each(function(i,v){
-				// 	if ( $(v).html()  == t.sname ){
-				// 		$(v).addClass("selected-row")
-				// 	}else(
-				// 		$(v).removeClass("selected-row")	
-				// 	)
-				// })
-			}				
+			}			
 		});
     }
 );

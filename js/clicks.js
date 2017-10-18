@@ -14,7 +14,7 @@ function ( declare, Query, QueryTask ) {
 							t.obj.visibleLayers = [ t[t.obj.selectedScale] ];	
 							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 							// hide chart and table
-							$("#" + t.id + "click-wrap").slideUp();
+							$("#" + t.id + "tclick-wrap").slideUp();
 							$("#" + t.id + "click-map").html("Click Map for Species Info");
 							
 							$("#" + t.id + "symByWrap").slideDown();
@@ -110,28 +110,28 @@ function ( declare, Query, QueryTask ) {
 						}
 					})
 					// update migratory chart
-					$("#" + t.id + "mig-row-wrap").empty();	
+					$("#" + t.id + "t-mig-row-wrap").empty();	
 					$.each(t.SpecObj,function(i,v){
 						var sp = v.Species.split(' -')[0]
 						if (v.Species == t.obj.selectedSpecies){
 							if (v.Migratory_Timing){	
 								var mtArray = v.Migratory_Timing.split(", ")
-								$("#" + t.id + "mig-row-wrap").append(			
-									"<div class='mig-row'>" +
-										"<div class='mig-name'>" + v.Species + "</div>" +
-										// "<div class='mig-lifestage'>temp</div>" +
-										"<div class='mig-months first-month mig-" + mtArray[0] + "'></div>" +
-										"<div class='mig-months mig-" + mtArray[1] + "'></div>" +
-										"<div class='mig-months mig-" + mtArray[2] + "'></div>" +
-										"<div class='mig-months mig-" + mtArray[3] + "'></div>" +
-										"<div class='mig-months mig-" + mtArray[4] + "'></div>" +
-										"<div class='mig-months mig-" + mtArray[5] + "'></div>" +
-										"<div class='mig-months mig-" + mtArray[6] + "'></div>" +
-										"<div class='mig-months mig-" + mtArray[7] + "'></div>" +
-										"<div class='mig-months mig-" + mtArray[8] + "'></div>" +
-										"<div class='mig-months mig-" + mtArray[9] + "'></div>" + 
-										"<div class='mig-months mig-" + mtArray[10] + "'></div>" + 
-										"<div class='mig-months last-month mig-" + mtArray[11] +"'></div>" +
+								$("#" + t.id + "t-mig-row-wrap").append(			
+									"<div class='t-mig-row'>" +
+										"<div class='t-mig-name'>" + v.Species + "</div>" +
+										// "<div class='t-mig-lifestage'>temp</div>" +
+										"<div class='t-mig-months first-month t-mig-" + mtArray[0] + "'></div>" +
+										"<div class='t-mig-months t-mig-" + mtArray[1] + "'></div>" +
+										"<div class='t-mig-months t-mig-" + mtArray[2] + "'></div>" +
+										"<div class='t-mig-months t-mig-" + mtArray[3] + "'></div>" +
+										"<div class='t-mig-months t-mig-" + mtArray[4] + "'></div>" +
+										"<div class='t-mig-months t-mig-" + mtArray[5] + "'></div>" +
+										"<div class='t-mig-months t-mig-" + mtArray[6] + "'></div>" +
+										"<div class='t-mig-months t-mig-" + mtArray[7] + "'></div>" +
+										"<div class='t-mig-months t-mig-" + mtArray[8] + "'></div>" +
+										"<div class='t-mig-months t-mig-" + mtArray[9] + "'></div>" + 
+										"<div class='t-mig-months t-mig-" + mtArray[10] + "'></div>" + 
+										"<div class='t-mig-months last-month t-mig-" + mtArray[11] +"'></div>" +
 									"</div>" 
 								)
 							}	

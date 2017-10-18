@@ -39,7 +39,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 		},
 		// Called when user hits the minimize '_' icon on the pluging. Also called before hibernate when users closes app by clicking 'X'.
 		deactivate: function () {
-			$('.sidebar-nav .nav-title').css("margin-left", "0px");
+			$(".sidebar-nav .nav-title").css("margin-left", "0px");
 			this.open = "no";	
 		},	
 		// Called when user hits 'Save and Share' button. This creates the url that builds the app at a given state using JSON. 
@@ -74,7 +74,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 			this.clicks = new clicks();
 			this.variables = new variables();
 			// ADD HTML TO APP
-			$(this.container).parent().append('<button id="viewMbInfoGraphicIcon" class="button button-default ig-icon"><img src="plugins/tuna-fisheries/images/InfographicIcon_v1_23x23.png" alt="show overview graphic"></button>')
+			$(this.container).parent().append('<button id="viewTunaInfoGraphicIcon" class="button button-default ig-icon"><img src="plugins/tuna-fisheries/images/InfographicIcon_v1_23x23.png" alt="show overview graphic"></button>')
 			$(this.container).parent().find("#viewMbInfoGraphicIcon").on('click',function(c){
 				TINY.box.show({
 					animate: true,

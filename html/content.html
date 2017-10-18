@@ -1,10 +1,10 @@
-﻿<!--This HTML is used in the render function to build the elements within the plugin. The render function first creates a
+<!--This HTML is used in the render function to build the elements within the plugin. The render function first creates a
 Dijit ContentPane to hold all the elements. The ContentPane is assigned a dynamic id upon creation. The render function
 takes the ContentPane id and prepends it to every element with a declared id in this HTML before the elements are created.
 The unique ContentPane id makes all the element ids unique and prevents duplicate id errors across other apps.-->
 
 <section id="top-wrap" class="top-wrap">
-	<h3 style="margin-top:10px">Browse Data <img src="plugins/tuna-fisheries/images/infoButton.png" alt="show info about data" class="infoIcon" id="dataInfo"><img src="plugins/tuna-fisheries/images/infoClose.png" alt="show info about data" class="hideInfo" id="hideDataInfo"><!-- <span id="hideDataInfo" class="hideInfo">Close</span> --></h3>
+	<h3 style="margin-top:10px">Browse Data <img src="plugins/tuna-fisheries/images/infoButton.png" alt="show info about data" class="tinfoIcon" id="dataInfo"><img src="plugins/tuna-fisheries/images/infoClose.png" alt="show info about data" class="thideInfo" id="hideDataInfo"><!-- <span id="hideDataInfo" class="thideInfo">Close</span> --></h3>
 	<div id="explain-data-wrap" class="explain-wrap">
 		<p>PLEASE NOTE that these data products were created using available data tracks, which are limited. While some corridors incorporated over 100 animal tracks, some have incorporated as few as 10. This is critical to note when drawing conclusions from our data products. These data products are a work in progress, and the information in this tool will be continually updated and improved over time.</p>
 		<p>Other notes:
@@ -48,7 +48,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 </section>
 <section id="tuna-wrap" class="tuna-wrap">	
 	<h3 id="click-map">Click Map for Species Info</h3>
-	<div id="click-wrap" class="click-wrap">	
+	<div id="tclick-wrap" class="tclick-wrap">	
 		<div id="speciesToggle" class="toggle-btn">
 			<input type="radio" id="ch1" name="ch" value="Albacore Tuna"/>
 			<label for="ch1">Albacore Tuna</label>
@@ -89,7 +89,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 				</div>
 			</div>
 		</div>
-				<!-- <h4> <img src="plugins/tuna-fisheries/images/info.png" alt="show info about table" class="infoIcon" id="tableInfo"><span id="hideTableInfo" class="hideInfo">Close</span></h4>
+				<!-- <h4> <img src="plugins/tuna-fisheries/images/info.png" alt="show info about table" class="tinfoIcon" id="tableInfo"><span id="hideTableInfo" class="thideInfo">Close</span></h4>
 		<div id="explain-table-wrap" class="explain-wrap">
 			<p>Add info</p>
 		</div> -->
@@ -112,28 +112,28 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		  </tbody>
 		</table>
 		<h4>Migration Periods</h4>
-		<div id="migration-wrap" class="migration-wrap">
-			<div class="mig-toprow">
-				<div class="mig-name">Species</div>
-				<!-- <div class="mig-lifestage">Lifestage</div> -->
-				<div class="mig-months-top">Jan</div>
-				<div class="mig-months-top">Feb</div>
-				<div class="mig-months-top">Mar</div>
-				<div class="mig-months-top">Apr</div>
-				<div class="mig-months-top">May</div>
-				<div class="mig-months-top">Jun</div>
-				<div class="mig-months-top">Jul</div>
-				<div class="mig-months-top">Aug</div>
-				<div class="mig-months-top">Sep</div>
-				<div class="mig-months-top">Oct</div>
-				<div class="mig-months-top">Nov</div>
-				<div class="mig-months-top">Dec</div>
+		<div id="t-migration-wrap" class="t-migration-wrap">
+			<div class="t-mig-toprow">
+				<div class="t-mig-name">Species</div>
+				<!-- <div class="t-mig-lifestage">Lifestage</div> -->
+				<div class="t-mig-months-top">Jan</div>
+				<div class="t-mig-months-top">Feb</div>
+				<div class="t-mig-months-top">Mar</div>
+				<div class="t-mig-months-top">Apr</div>
+				<div class="t-mig-months-top">May</div>
+				<div class="t-mig-months-top">Jun</div>
+				<div class="t-mig-months-top">Jul</div>
+				<div class="t-mig-months-top">Aug</div>
+				<div class="t-mig-months-top">Sep</div>
+				<div class="t-mig-months-top">Oct</div>
+				<div class="t-mig-months-top">Nov</div>
+				<div class="t-mig-months-top">Dec</div>
 			</div>
-			<div id="mig-row-wrap"></div>
-			<div class="mig-key">
-				<div class="mig-leg mig-0"></div><div class="mig-leglbl">In foraging areas</div>
-				<div class="mig-leg mig-3"></div><div class="mig-leglbl">Spawning</div>
-				<div class="mig-leg mig-2"></div><div class="mig-leglbl">Migration period</div>
+			<div id="t-mig-row-wrap"></div>
+			<div class="t-mig-key">
+				<div class="t-mig-leg t-mig-0"></div><div class="t-mig-leglbl">In foraging areas</div>
+				<div class="t-mig-leg t-mig-3"></div><div class="t-mig-leglbl">Spawning</div>
+				<div class="t-mig-leg t-mig-2"></div><div class="t-mig-leglbl">Migration period</div>
 			</div>
 		</div>
 		
