@@ -40,23 +40,11 @@
 }
 
 /* IUCN Attributes */
-.iucn-attributes{
-  padding:5px;
-}
-.iucn-attribute{
-  margin-bottom:10px; color:#5E94B6;
-}
-.iucn-attribute{
-  font-weight:bold;
- }
 .iucn-attributeSpan{
-  font-weight:normal;
- } 
-.iucn-flex{
-  display:flex; flex-wrap:wrap;
+  display:none; 
 }
-.iucn-flex .iucn-attribute{
-  flex:1; margin-bottom:4px; font-weight:bold; min-width:200px;
+.iucn-wrap{
+  padding:20px; margin-bottom:50px; height:300px; overflow-y:auto;
 }
 
 

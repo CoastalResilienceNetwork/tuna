@@ -138,14 +138,22 @@ function ( declare, Query, QueryTask ) {
 							// IUCN Attributes
 							$.each($("#" + t.id + " .iucn-attributeSpan"),function(j,w){
 								var field = $(w).attr("id").split("-")[1]
-								$("#" + t.id + "-" + field).html( v[field] )
+								$("#" + t.id + "-" + field).html( v[field] + "<div style='height:20px;'></div>" )
 								if (field == "Link"){
 									$("#" + t.id + "-" + field).attr("href", v[field])	
 								}
 							})
+
 						}
 					})
+					$("#" + t.id + "iucnToggle input[value='" + t.obj.selectedIucn + "']").trigger("click");
 				})	
+				// IUCN Toggle button
+				$("#" + t.id + "iucnToggle input").click(function(c){
+					t.obj.selectedIucn = c.currentTarget.value;
+					$("#" + t.id + " .iucn-attributeSpan").hide();
+					$("#" + t.id + t.obj.selectedIucn).show();
+				});	
 
 				$("#" + t.id + "dataInfo").click(function(){
 					$("#" + t.id + "explain-data-wrap").slideDown();

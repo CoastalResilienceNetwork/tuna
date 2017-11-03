@@ -138,36 +138,19 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		</div>
 		
 		<h4>IUCN Species Data</h4>
-		<div class="iucn-attributes iucn-flex">
-			<div class="iucn-attribute">
-				English Common Name: <span id="-Species" class="iucn-attributeSpan" style="color:#5d6165;"></span>
-			</div>
-			<div class="iucn-attribute">
-				Spanish Common Name: <span id="-Spanish_CommonName" class="iucn-attributeSpan" style="color:#5d6165;"></span>
-			</div>
-			<div class="iucn-attribute">
-				Scientific Name: <span id="-Scientific_Name" class="iucn-attributeSpan" style="color:#5d6165;"></span>
-			</div>
-			<div class="iucn-attribute">
-				IUCN Red List Status: <span id="-IUCN_Red_List_Status" class="iucn-attributeSpan" style="color:#5d6165;"></span>
-			</div>
+		<div id="iucnToggle" class="toggle-btn">
+			<input type="radio" id="iut1" name="iut" value="-Habitat_and_Ecology"/><label for="iut1">Habitat and Ecology</label>
+			<input type="radio" id="iut2" name="iut" value="-Use_and_Trade"/><label for="iut2">Use and Trade</label>
+			<input type="radio" id="iut3" name="iut" value="-Threats"/><label for="iut3">Threats</label>
+			<input type="radio" id="iut4" name="iut" value="-Conservation_Actions"/><label for="iut4">Conservation Actions</label>
+			<input type="radio" id="iut5" name="iut" value="-Link"/><label for="iut5">Link to IUCN Record</label>
 		</div>			
-		<div class="hl-info-box iucn-attributes">
-			<div class="iucn-attribute">
-				Habitat and Ecology: <span id="-Habitat_and_Ecology" class="iucn-attributeSpan" style="color:#5d6165;"></span>
-			</div>
-			<div class="iucn-attribute">
-				Use and Trade: <span id="-Use_and_Trade" class="iucn-attributeSpan" style="color:#5d6165;"></span>
-			</div>
-			<div class="iucn-attribute">
-				Threats: <span id="-Threats" class="iucn-attributeSpan" style="color:#5d6165;"></span>
-			</div>
-			<div class="iucn-attribute">
-				Conservation Actions: <span id="-Conservation_Actions" class="iucn-attributeSpan" style="color:#5d6165;"></span>
-			</div>
-			<div class="iucn-attribute">
-				Link: <a id="-Link" class="iucn-attributeSpan" target="_blank"></a>
-			</div>
+		<div class="hl-info-wrap iucn-wrap">
+			<div id="-Habitat_and_Ecology" class="iucn-attributeSpan" style="color:#5d6165;"></div>
+			<div id="-Use_and_Trade" class="iucn-attributeSpan" style="color:#5d6165;"></div>
+			<div id="-Threats" class="iucn-attributeSpan" style="color:#5d6165;"></div>
+			<div id="-Conservation_Actions" class="iucn-attributeSpan" style="color:#5d6165;"></div>
+			<a id="-Link" class="iucn-attributeSpan" target="_blank"></a>
 		</div>
 	</div>	
 </section>	
