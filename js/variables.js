@@ -7,30 +7,58 @@ function ( declare, Query, QueryTask ) {
         return declare(null, {
 			makeVariables: function(t){
 				// layer IDs
-				t.EEZ = 1;
-				t.Fishnet = 3;
-				t.ManageedandProtectionAreas = 5;
-				t.OilandGasPlanningandUseAreas = 7;
-				t.Regulations = 44;
+				t.EEZ = 13;
+				t.Fishnet = 15;
+				t.ManageedandProtectionAreas = 17;
+				t.OilandGasPlanningandUseAreas = 19;
+				t.Regulations = 56;
 				t.RegObj = [];
-				t.SpeciesData = 45;
+				t.SpeciesData = 57;
 				t.SpecObj = [];
 				t.symLayers = { 
 					"EEZ": {
-						"AllTunaSpecies":8, "AlbacoreTuna":9, "AtlanticBluefinTuna":10, "AtlanticBonito":11, "BigeyeTuna":12, "BlackfinTuna":13,
-						"LittleTunny":14, "SkipjackTuna":15, "YellowfinTuna":16
+						"AllTunaSpecies":20, 
+						"AlbacoreTuna":21, 
+						"AtlanticBluefinTuna":22, 
+						"AtlanticBonito":23, 
+						"BigeyeTuna":24, 
+						"BlackfinTuna":25,
+						"LittleTunny":26, 
+						"SkipjackTuna":27, 
+						"YellowfinTuna":28
 					}, 
 					"Fishnet": {   
-						"AllTunaSpecies":17, "AlbacoreTuna":18, "AtlanticBluefinTuna":19, "AtlanticBonito":20, "BigeyeTuna":21, "BlackfinTuna":22,
-						"LittleTunny":23, "SkipjackTuna":24, "YellowfinTuna":25
+						"AllTunaSpecies":29,
+						"AlbacoreTuna":30,
+						"AtlanticBluefinTuna":31, 
+						"AtlanticBonito":32, 
+						"BigeyeTuna":33, 
+						"BlackfinTuna":34,
+						"LittleTunny":35, 
+						"SkipjackTuna":36, 
+						"YellowfinTuna":37
 					},
 					"ManageedandProtectionAreas": {
-						"AllTunaSpecies":26, "AlbacoreTuna":27, "AtlanticBluefinTuna":28, "AtlanticBonito":29, "BigeyeTuna":30, "BlackfinTuna":31,
-						"LittleTunny":32, "SkipjackTuna":33, "YellowfinTuna":34 
+						"AllTunaSpecies":38, 
+						"AlbacoreTuna":39, 
+						"AtlanticBluefinTuna":40, 
+						"AtlanticBonito":41, 
+						"BigeyeTuna":42, 
+						"BlackfinTuna":43,
+						"LittleTunny":44, 
+						"SkipjackTuna":45,
+						"YellowfinTuna":46 
 					},
 					"OilandGasPlanningandUseAreas": {
-						"AllTunaSpecies":35, "AlbacoreTuna":36, "AtlanticBluefinTuna":37, "AtlanticBonito":38, "BigeyeTuna":39, "BlackfinTuna":40,
-						"LittleTunny":41, "SkipjackTuna":42, "YellowfinTuna":43 
+						"AllTunaSpecies":47,
+						"AlbacoreTuna":48,
+						"AtlanticBluefinTuna":49,
+						"AtlanticBonito":50, 
+						"BigeyeTuna":51,
+						"BlackfinTuna":52,
+						"LittleTunny":53,
+						"SkipjackTuna":54,
+						"YellowfinTuna":55 
 					}
 				}
 				t.speciesCodes = ["ALB", "BON", "BLK", "LTT", "SKJ", "YFT", "BFT", "BET"] 
