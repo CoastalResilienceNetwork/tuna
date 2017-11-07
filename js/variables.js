@@ -16,6 +16,20 @@ function ( declare, Query, QueryTask ) {
 				t.SpeciesData = 57;
 				t.SpecObj = [];
 				t.symLayers = { 
+					"EFH": {
+						"ALBADU": 0,
+						"ALBJUV": 1,
+						"BFTADU": 2,
+						"BFTSEL": 3,
+						"BETADU": 4,
+						"BETJUV": 5,
+						"SKJADU": 6,
+						"SKJJUV": 7,
+						"SKJSEL": 8,
+						"YFTADU": 9,
+						"YFTJUV": 10,
+						"YFTSEL": 11
+					},
 					"EEZ": {
 						"AllTunaSpecies":20, 
 						"AlbacoreTuna":21, 

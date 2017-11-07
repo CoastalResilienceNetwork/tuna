@@ -51,10 +51,17 @@ function ( declare, Query, QueryTask ) {
 							t.obj.visibleLayers.push(t.selFtr)
 						}
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-						t.esriapi.rowClicked(t);
+					
 					});	
 				// Species Toggle button
 				$("#" + t.id + "speciesToggle input").click(function(c){
+					$.each(t.symLayers.EFH,function(i,v){
+						var index = t.obj.visibleLayers.indexOf(v);
+						if (index > -1) {
+						    t.obj.visibleLayers.splice(index, 1);
+						}
+					})
+					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 					var sp = c.currentTarget.value;
 					t.obj.selectedSpecies = c.currentTarget.value;
 					// var tmp = t.obj.selectedSpecies.replace(/\s+/g, '')
@@ -67,8 +74,32 @@ function ( declare, Query, QueryTask ) {
 							$("#" + t.id + "spanishCom").html(v.Spanish_CommonName)
 						}
 					})	
+					$("#" + t.id + "esFishHab").empty();
 					if (t.efhPres[t.obj.selectedSpecies]){
-						$("#" + t.id + "esFishHab").html(t.efhPres[t.obj.selectedSpecies])
+						var spc = t.efhPres[t.obj.selectedSpecies][0]
+						var a = t.efhPres[t.obj.selectedSpecies]
+						var str = "";
+						for (var i = 1; i < a.length; i++) {
+							var type = a[i].replace("JUV", "Juvenile").replace("SEL", "Spawning Egg Larvae").replace("ADU", "Adult")
+							var cd = spc + a[i]
+							var val = t.symLayers.EFH[cd]							
+							str = str + 
+								"<label style='margin-left:10px' class='form-component' for='option-" + i + "'><input type='checkbox' id='option-" + i + 
+								"' name='efhcb' value='" + val + "'><div class='check'></div><span class='form-text'>" + type + "</span></label>"
+						}	
+						$("#" + t.id + "esFishHab").html(str)
+						$("#" + t.id + "esFishHab input").click(function(c){
+							var lyr = Number(c.currentTarget.value);
+							if(c.currentTarget.checked){
+								t.obj.visibleLayers.push(lyr)
+							}else{
+								var index = t.obj.visibleLayers.indexOf(lyr);
+								if (index > -1) {
+									t.obj.visibleLayers.splice(index, 1);
+								}
+							}
+							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+						})
 					}else{
 						$("#" + t.id + "esFishHab").html("None")
 					}

@@ -69,26 +69,29 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		</div>
 		<!-- <h3 id="selectedTuna">Tuna Name</h3> -->
 		<div class="hl-info-wrap">	
-			<div class="hl-info-box">
-				<div class="hl-info-attribute">
-					Spanish Common Name: <span id="spanishCom" class="hl-info-attributeSpan" style="color:#5d6165;"></span>
+			<div class="hl-info-flex">	
+				<div class="hl-info-box">
+					<div class="hl-info-attribute">
+						Scientific Name: <span id="scientificName" class="hl-info-attributeSpan" style="color:#5d6165; font-style:italic;"></span>
+					</div>
+					<div class="hl-info-attribute">
+						Spanish Common Name: <span id="spanishCom" class="hl-info-attributeSpan" style="color:#5d6165;"></span>
+					</div>
 				</div>
-				<div class="hl-info-attribute">
-					Scientific Name: <span id="scientificName" class="hl-info-attributeSpan" style="color:#5d6165; font-style:italic;"></span>
-				</div>
-				<div class="hl-info-attribute">
-					Essential Fish Habitat: <span id="esFishHab" class="hl-info-attributeSpan" style="color:#5d6165;"></span>
-				</div>
-			</div>
-			<div class="hl-info-box">
-				<div class="hl-info-attribute">
-					IUCN Red List Status: <span id="redList" class="hl-info-attributeSpan" style="color:#5d6165;"></span>
-				</div>
-				<div class="hl-info-attribute">
-					<span id="consRegion"></span> Conservation Status: <span id="consStatus" class="hl-info-attributeSpan" style="color:#5d6165;">None</span>
-				</div>
+				<div class="hl-info-box">
+					<div class="hl-info-attribute">
+						IUCN Red List Status: <span id="redList" class="hl-info-attributeSpan" style="color:#5d6165;"></span>
+					</div>
+					<div class="hl-info-attribute">
+						<span id="consRegion"></span> Conservation Status: <span id="consStatus" class="hl-info-attributeSpan" style="color:#5d6165;">None</span>
+					</div>
+				</div>	
+			</div>	
+			<div class="hl-info-attribute" style="padding:0 5px 5px 5px; margin-top:-5px;">
+				Essential Fish Habitat: <span id="esFishHab" class="hl-info-attributeSpan" style="color:#5d6165;"></span>
 			</div>
 		</div>
+
 				<!-- <h4> <img src="plugins/tuna-fisheries/images/info.png" alt="show info about table" class="tinfoIcon" id="tableInfo"><span id="hideTableInfo" class="thideInfo">Close</span></h4>
 		<div id="explain-table-wrap" class="explain-wrap">
 			<p>Add info</p>

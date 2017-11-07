@@ -27,7 +27,10 @@
 
 /* high level info */
 .hl-info-wrap {
-    display:flex; flex-wrap:wrap; border:1pt solid #cdd5d5; box-shadow:0 1px 1px rgba(16,22,26,.2); width:557px; border-top:none;
+    border:1pt solid #cdd5d5; box-shadow:0 1px 1px rgba(16,22,26,.2); width:557px; border-top:none;
+}
+.hl-info-flex{
+  display:flex; flex-wrap:wrap;
 }
 .hl-info-box {
   position:relative; flex:1; padding:5px; margin-top:7px;

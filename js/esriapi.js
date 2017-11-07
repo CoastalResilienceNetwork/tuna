@@ -85,8 +85,10 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 									var str = "";
 									if (t.atts[g]){
 										if (t.atts[g].length > 0){
-											str = t.atts[g].replace("JUV", "Juvenile").replace("SEL", "Spawning Egg Larvae").replace("ADU", "Adult")
-											t.efhPres[t.speciesCodes1[v]] = str
+											// str = t.atts[g].replace("JUV", "Juvenile").replace("SEL", "Spawning Egg Larvae").replace("ADU", "Adult")
+											str = t.atts[g].split(", ")
+											str.unshift(v);
+											t.efhPres[t.speciesCodes1[v]] = str 
 										}	
 									}
 								})
