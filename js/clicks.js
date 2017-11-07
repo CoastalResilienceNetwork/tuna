@@ -63,7 +63,7 @@ function ( declare, Query, QueryTask ) {
 					})
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 					var sp = c.currentTarget.value;
-					t.obj.selectedSpecies = c.currentTarget.value;
+					t.obj.selectedSpecies = c.currentTarget.value;					
 					// var tmp = t.obj.selectedSpecies.replace(/\s+/g, '')
 					// $("#" + t.id + "symbolizeBy").val(tmp).trigger("chosen:updated").trigger("change");
 					// update high-level info
@@ -85,7 +85,7 @@ function ( declare, Query, QueryTask ) {
 							var val = t.symLayers.EFH[cd]							
 							str = str + 
 								"<label style='margin-left:10px' class='form-component' for='option-" + i + "'><input type='checkbox' id='option-" + i + 
-								"' name='efhcb' value='" + val + "'><div class='check'></div><span class='form-text'>" + type + "</span></label>"
+								"' name='efhcb' value='" + val + "'><div class='check'></div><span class='form-text' style='margin-left:4px;'>" + type + "</span></label>"
 						}	
 						$("#" + t.id + "esFishHab").html(str)
 						$("#" + t.id + "esFishHab input").click(function(c){
@@ -101,7 +101,7 @@ function ( declare, Query, QueryTask ) {
 							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 						})
 					}else{
-						$("#" + t.id + "esFishHab").html("None")
+						$("#" + t.id + "esFishHab").html("<span style='margin-left:10px;'>None</span>")
 					}
 					$.each(t.selRegSpecies,function(i,v){
 						if (v.SpecName == sp){
@@ -178,6 +178,26 @@ function ( declare, Query, QueryTask ) {
 						}
 					})
 					$("#" + t.id + "iucnToggle input[value='" + t.obj.selectedIucn + "']").trigger("click");
+					// if ($("#" + t.id + "to-show").is(":checked")){
+					// 	$("#" + t.id + "to-show").trigger("click")
+					// }
+					var tracker = 0
+					$.each(t.obisSpec, function(i,v){
+						if (v == t.obj.selectedSpecies){
+							tracker = 1
+							return false
+						}
+					})	
+					if (tracker == 0){
+						$(".obisNone").show()
+						$(".obisSome").hide()
+					}else{
+						if ($("#" + t.id + "to-show").is(":checked")){
+							$("#" + t.id + "to-show").trigger("click")
+						}
+						$(".obisNone").hide()
+						$(".obisSome").show()
+					}
 				})	
 				// IUCN Toggle button
 				$("#" + t.id + "iucnToggle input").click(function(c){
@@ -205,8 +225,34 @@ function ( declare, Query, QueryTask ) {
 					$("#" + t.id + "explain-table-wrap").slideUp();
 					$("#" + t.id + "tableInfo").show();
 					$("#" + t.id + "hideTableInfo").hide();
-				});	
-			}
+				});
+				// show/hide tuna observations slider
+				$("#" + t.id + "to-show").change(function(c){
+					var index = t.obj.visibleLayers.indexOf(t.obis);
+					if (c.currentTarget.checked){
+						if (index == -1){
+							t.obj.visibleLayers.push(t.obis)
+						}
+						$(".tuna-sld").show();
+						var v = $("#" + t.id + "sldr").slider("value")
+						$("#" + t.id + "sldr").slider("value", v)
+					}else{
+						if (index > -1) {
+							t.obj.visibleLayers.splice(index, 1);
+							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers)
+						}
+						$(".tuna-sld").hide();
+					}
+				})
+				// Initialize Tuna Observations slider and handle changes
+				$("#" + t.id + "sldr").slider({ min: 1, max: 12, range: false, values: [1],
+				 	change:function(event, ui){
+						var sm = t.obj.selectedSpecies + ui.value
+						t.layerDefs[t.obis] = "SpeciesMonth = '" + sm + "'";
+						t.dynamicLayer.setLayerDefinitions(t.layerDefs);
+						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers)
+				 	} 
+				 })}
         });
     }
 );

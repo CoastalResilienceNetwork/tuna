@@ -41,6 +41,16 @@
 .hl-info-attributeSpan{
   font-weight:bold;
 }
+/* slider labels */
+.to-slider-label{
+  display:flex; font-size:11px; margin:2px 0 10px -12px;
+}
+.to-slider-label div{
+  min-width:25px; text-align:center;
+}
+.tuna-sld{
+  display:none;
+}
 
 /* IUCN Attributes */
 .iucn-attributeSpan{
