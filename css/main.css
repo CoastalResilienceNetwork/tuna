@@ -1,17 +1,14 @@
 .ig-icon{
   padding:2px !important; height:28px; position:absolute; top:6px; margin-left:4px; z-index:2600;
 }
-.click-wrap, .species-wrap{
+.tclick-wrap, .tuna-wrap{
   display:none;
 }
-.selected-row{
-  font-weight:bold; color: #21658c;
-}
-.infoIcon{
+.tinfoIcon{
   cursor:pointer; margin-bottom:-3px;
 }
-.hideInfo{
-  color:blue; cursor:pointer; display:none;
+.thideInfo{
+  cursor:pointer; display:none; margin-bottom:-3px;
 }
 .explain-wrap{
   display:none; font-size:12px;
@@ -19,53 +16,89 @@
 .zoom-to-lease{
   margin-left:10px; font-size:12px; display:none;
 }
+.hideClass{
+  display:none;
+}
 
-/* Species table */
-.species-wrap table {
+.tuna-wrap .toggle-btn{
+  width:563px; margin-bottom:-6px;
+}
+
+
+/* high level info */
+.hl-info-wrap {
+    border:1pt solid #cdd5d5; box-shadow:0 1px 1px rgba(16,22,26,.2); width:557px; border-top:none;
+}
+.hl-info-flex{
+  display:flex; flex-wrap:wrap;
+}
+.hl-info-box {
+  position:relative; flex:1; padding:5px; margin-top:7px;
+}
+.hl-info-attribute {
+    color:#5E94B6; margin-bottom:2px;
+}
+.hl-info-attributeSpan{
+  font-weight:bold;
+}
+/* slider labels */
+.to-slider-label{
+  display:flex; font-size:11px; margin:2px 0 10px -12px;
+}
+.to-slider-label div{
+  min-width:25px; text-align:center;
+}
+.tuna-sld{
+  display:none;
+}
+
+/* IUCN Attributes */
+.iucn-attributeSpan{
+  display:none; 
+}
+.iucn-wrap{
+  padding:20px; margin-bottom:50px; height:300px; overflow-y:auto;
+}
+
+
+/* Species and regulations tables */
+.tuna-wrap table {
   border-collapse:collapse; border:1px solid #ddd; box-shadow:0 1px 1px rgba(16,22,26,.2); width:563px;
 }   
-.species-wrap tr:hover {
-  background:#e1e7eb; cursor:pointer;
-}
-.species-wrap th, .species-wrap td {
+.tuna-wrap th, .tuna-wrap td {
   border-left:1px solid #eee; border-right:1px solid #eee; padding:5px; border-collapse:collapse; font-size:12px; 
 }
-.species-wrap td {
+.tuna-wrap td {
   border-top:1px solid #999;
 } 
-.species-wrap th {
+.tuna-wrap th {
   color:#5d6165; background:#f4f4f4; font-size:12px;  
   &.last {
     border-right: none;
   }
 }
 
-
 /* Migration graph */
-.migration-wrap{
+.t-migration-wrap{
   border:1px solid #ddd; box-shadow: 0 1px 1px rgba(16,22,26,.2); width:563px;
 }
-.mig-toprow{
+.t-mig-toprow{
   display:flex; align-items:flex-end; font-weight:bold; font-size:12px; padding:5px; background:#f4f4f4;
 }
-.mig-row{
+.t-mig-row{
   display:flex; height:40px; align-items:center; border-top:1px solid #999; font-size:12px; padding:5px;
 }
-.mig-row:hover {
-  background:#e1e7eb;
-  cursor:pointer;
+.t-mig-name{
+  margin-right:6px; width:136px;
 }
-.mig-name{
-  margin-right:6px; width:90px;
-}
-.mig-lifestage{
+.t-mig-lifestage{
   margin-right:6px; width:70px;
 }
-.mig-months-top{
-  width:33px; text-align:center;
+.t-mig-months-top{
+  width:57px; text-align:center;
 }
-.mig-months{
-  height:20px; width:33px; border-top:1pt solid #555; border-bottom:1pt solid #555;
+.t-mig-months{
+  height:20px; width:57px; border-top:1pt solid #555; border-bottom:1pt solid #555;
 }
 .first-month{
   border-left:1pt solid #555; border-top-left-radius:3px; border-bottom-left-radius:3px;
@@ -73,26 +106,26 @@
 .last-month{
   border-right:1pt solid #555; border-top-right-radius:3px; border-bottom-right-radius:3px;
 }
-.mig-0{
+.t-mig-0{
   background:#A1BF54;
 }
-.mig-1{
+.t-mig-1{
   background:#bfa854;
 }
-.mig-2{
+.t-mig-2{
   background:#CEE6F2;
 }
-.mig-3{
+.t-mig-3{
   background:#C65B25;
 }
-.mig-key{
-  display:flex; margin:10px 0px; justify-content:center;
+.t-mig-key{
+  display:flex; margin-top:4px; justify-content:center;
 }
-.mig-leg{
+.t-mig-leg{
   margin-top:1px; height:15px; width:15px; border-radius:3px; border:1pt solid #555;
 }
-.mig-leglbl{
-  margin:0px 14px 50px 4px; font-size:12px;
+.t-mig-leglbl{
+  margin:0px 14px 5px 4px; font-size:12px;
 }
 
 /*close button color for popup*/

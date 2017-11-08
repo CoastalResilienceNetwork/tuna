@@ -7,32 +7,80 @@ function ( declare, Query, QueryTask ) {
         return declare(null, {
 			makeVariables: function(t){
 				// layer IDs
-				t.EEZ = 1;
-				t.MexicanProvince = 3;
-				t.USProtractionArea = 5;
-				t.USLeaseBlock = 7;
+				t.obis = 0;
+				t.obisSpec = ["Atlantic Bluefin Tuna", "Bigeye Tuna", "Blackfin Tuna", "Skipjack Tuna", "Yellowfin Tuna"]
+				t.EEZ = 14;
+				t.Fishnet = 16;
+				t.ManageedandProtectionAreas = 18;
+				t.OilandGasPlanningandUseAreas = 20;
+				t.Regulations = 57;
+				t.RegObj = [];
+				t.SpeciesData = 58;
+				t.SpecObj = [];
 				t.symLayers = { 
-					"USProtractionArea": {   
-						"WhaleShark": 9, "SpermWhale": 10, "LoggerheadSeaTurtle": 11, "KempsRidleySeaTurtle": 12, "GulfSturgeon": 13, 
-						"GreenSeaTurtle": 14, "BullShark": 15, "BlueMarlin": 16, "AtlanticTarpon": 17, "BluefinTuna": 18,
-						"Fish": 19, "SeaTurtles": 20, "MarineMammals": 21, "AllSpecies": 22
+					"EFH": {
+						"ALBADU": 1,
+						"ALBJUV": 2,
+						"BFTADU": 3,
+						"BFTSEL": 4,
+						"BETADU": 5,
+						"BETJUV": 6,
+						"SKJADU": 7,
+						"SKJJUV": 8,
+						"SKJSEL": 9,
+						"YFTADU": 10,
+						"YFTJUV": 11,
+						"YFTSEL": 12
 					},
-					"MexicanProvince": {
-						"WhaleShark": 24, "SpermWhale": 25, "LoggerheadSeaTurtle": 26, "KempsRidleySeaTurtle": 27, "GulfSturgeon": 28, 
-						"GreenSeaTurtle": 29, "BullShark": 30, "BlueMarlin": 31, "AtlanticTarpon": 32, "BluefinTuna": 33,
-						"Fish": 34, "SeaTurtles": 35, "MarineMammals": 36, "AllSpecies": 37 
-					},
-					"USLeaseBlock": {
-						"WhaleShark": 39, "SpermWhale": 40, "LoggerheadSeaTurtle": 41, "KempsRidleySeaTurtle": 42, "GulfSturgeon": 43, 
-						"GreenSeaTurtle": 44, "BullShark": 45, "BlueMarlin": 46, "AtlanticTarpon": 47, "BluefinTuna": 48,
-						"Fish": 49, "SeaTurtles": 50, "MarineMammals": 51, "AllSpecies": 52, 
-					}, 
 					"EEZ": {
-						"WhaleShark": 54, "SpermWhale": 55, "LoggerheadSeaTurtle": 56, "KempsRidleySeaTurtle": 57, "GulfSturgeon": 58, 
-						"GreenSeaTurtle": 59, "BullShark": 60, "BlueMarlin": 61, "AtlanticTarpon": 62, "BluefinTuna": 63,
-						"Fish": 64, "SeaTurtles": 65, "MarineMammals": 66, "AllSpecies": 67,
-					} 
+						"AllTunaSpecies":21, 
+						"AlbacoreTuna":22, 
+						"AtlanticBluefinTuna":23, 
+						"AtlanticBonito":24, 
+						"BigeyeTuna":25, 
+						"BlackfinTuna":26,
+						"LittleTunny":27, 
+						"SkipjackTuna":28, 
+						"YellowfinTuna":29
+					}, 
+					"Fishnet": {   
+						"AllTunaSpecies":30,
+						"AlbacoreTuna":31,
+						"AtlanticBluefinTuna":32, 
+						"AtlanticBonito":33, 
+						"BigeyeTuna":34, 
+						"BlackfinTuna":35,
+						"LittleTunny":36, 
+						"SkipjackTuna":37, 
+						"YellowfinTuna":38
+					},
+					"ManageedandProtectionAreas": {
+						"AllTunaSpecies":39, 
+						"AlbacoreTuna":40, 
+						"AtlanticBluefinTuna":41, 
+						"AtlanticBonito":42, 
+						"BigeyeTuna":43, 
+						"BlackfinTuna":44,
+						"LittleTunny":45, 
+						"SkipjackTuna":46,
+						"YellowfinTuna":47 
+					},
+					"OilandGasPlanningandUseAreas": {
+						"AllTunaSpecies":48,
+						"AlbacoreTuna":49,
+						"AtlanticBluefinTuna":50,
+						"AtlanticBonito":51, 
+						"BigeyeTuna":52,
+						"BlackfinTuna":53,
+						"LittleTunny":54,
+						"SkipjackTuna":55,
+						"YellowfinTuna":56 
+					}
 				}
+				t.speciesCodes = ["ALB", "BON", "BLK", "LTT", "SKJ", "YFT", "BFT", "BET"] 
+				t.speciesCodes1 = {
+					"ALB": "Albacore Tuna", "BON": "Atlantic Bonito", "BLK": "Blackfin Tuna", "LTT": "Little Tunny", "SKJ": "Skipjack Tuna", 
+					"YFT": "Yellowfin Tuna", "BFT": "Atlantic Bluefin Tuna", "BET": "Bigeye Tuna"} 
 				// chart data
 				t.speciesMeta = {
 					"BS": {
