@@ -4,7 +4,7 @@ takes the ContentPane id and prepends it to every element with a declared id in 
 The unique ContentPane id makes all the element ids unique and prevents duplicate id errors across other apps.-->
 
 <section id="top-wrap" class="top-wrap">
-	<h3 style="margin-top:10px">Browse Data <img src="plugins/tuna-fisheries/images/infoButton.png" alt="show info about data" class="tinfoIcon" id="dataInfo"><img src="plugins/tuna-fisheries/images/infoClose.png" alt="show info about data" class="thideInfo" id="hideDataInfo"><!-- <span id="hideDataInfo" class="thideInfo">Close</span> --></h3>
+	<h3 style="margin-top:10px">Browse Data - <a href="plugins/tuna-fisheries/Tuna_Fisheries_Sources.pdf" target="_blank">Sources</a></h3>
 	<div id="explain-data-wrap" class="explain-wrap">
 		<p>PLEASE NOTE that these data products were created using available data tracks, which are limited. While some corridors incorporated over 100 animal tracks, some have incorporated as few as 10. This is critical to note when drawing conclusions from our data products. These data products are a work in progress, and the information in this tool will be continually updated and improved over time.</p>
 		<p>Other notes:
@@ -22,7 +22,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 			<select data-placeholder="Select Scale" id="selectScale" class="chosen">
 				<option></option>
 				<option value="EEZ">Exclusive Economic Zones (EEZ)</option>
-				<option value="Fishnet">IUCN Distribution</option>
+				<option value="Fishnet">20x20km Grid</option>
 				<option value="ManageedandProtectionAreas">Managed and Protected Areas</option>
 				<option value="OilandGasPlanningandUseAreas">Oil and Gas Planning and Use Areas</option>
 			</select>
@@ -126,7 +126,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		    <tr>
 		      <th>Region</th>
 		      <th>Regulations</th>
-		      <th>Link</th>
+		      <th>Sources</th>
 		    </tr>
 		  </thead>
 		  <tbody id="regTb">
