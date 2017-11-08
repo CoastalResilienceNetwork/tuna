@@ -15,7 +15,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 			declare.safeMixin(this, frameworkParameters);
 			// Define object to access global variables from JSON object. Only add variables to varObject.json that are needed by Save and Share. 
 			this.obj = dojo.eval("[" + obj + "]")[0];	
-			this.url = "http://dev.services.coastalresilience.org:6080/arcgis/rest/services/Gulf_of_Mexico/Tuna_Fisheries/MapServer";
+			this.url = "http://services.coastalresilience.org:6080/arcgis/rest/services/Gulf_of_Mexico/Tuna_Fisheries/MapServer";
 		},
 		// Called after initialize at plugin startup (why the tests for undefined). Also called after deactivate when user closes app by clicking X. 
 		hibernate: function () {
