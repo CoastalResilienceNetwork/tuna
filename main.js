@@ -74,14 +74,15 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 			this.clicks = new clicks();
 			this.variables = new variables();
 			// ADD HTML TO APP
-			$(this.container).parent().append('<button id="viewTunaInfoGraphicIcon" class="button button-default ig-icon"><img src="plugins/tuna-fisheries/images/InfographicIcon_v1_23x23.png" alt="show overview graphic"></button>')
-			$(this.container).parent().find("#viewMbInfoGraphicIcon").on('click',function(c){
+			$(this.container).parent().append('<button id="viewTunaInfoGraphicIcon" class="button button-default ig-icon" title="Infographic"><img src="plugins/tuna-fisheries/images/InfographicIcon_v1_23x23.png" alt="show overview graphic"></button>')
+			$(this.container).parent().find("#viewTunaInfoGraphicIcon").on('click',function(c){
+				console.log("click")
 				TINY.box.show({
 					animate: true,
 					url: 'plugins/tuna-fisheries/html/info-graphic.html',
 					fixed: true,
-					width: 800,
-					height: 601
+					width: 901,
+					height: 501
 				});
 			})
 			// Define Content Pane as HTML parent		

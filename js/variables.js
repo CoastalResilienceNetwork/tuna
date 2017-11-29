@@ -32,6 +32,13 @@ function ( declare, Query, QueryTask ) {
 						"YFTJUV": 11,
 						"YFTSEL": 12
 					},
+					"EFH1": {
+						"AlbacoreTuna": [ ["Adult", 1], ["Juvenile", 2] ],
+						"AtlanticBluefinTuna": [ ["Adult", 3], ["Spawning Egg Larvae", 4] ],	
+						"BigeyeTuna": [ ["Adult", 5], ["Juvenile", 6] ],
+						"SkipjackTuna": [ ["Adult", 7], ["Juvenile", 8], ["Spawning Egg Larvae", 9] ],
+						"YellowfinTuna": [ ["Adult", 10], ["Juvenile", 11], ["Spawning Egg Larvae", 12] ]
+					},
 					"EEZ": {
 						"AllTunaSpecies":21, 
 						"AlbacoreTuna":22, 

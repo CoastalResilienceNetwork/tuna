@@ -44,14 +44,13 @@ function ( declare, Query, QueryTask ) {
 						t.obj.symbolizeBy = c.target.value;
 						t.sname = $(c.currentTarget).find(":selected").text()
 						t.obj.visibleLayers = [ t.symLayers[t.obj.selectedScale][t.obj.symbolizeBy] ];
-						if (t.obj.selectedScale == "USLeaseBlock"){
-							t.obj.visibleLayers.push(t.USProtractionArea)
-						}
 						if (t.selFtr > -1){
 							t.obj.visibleLayers.push(t.selFtr)
 						}
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-					
+						if (t.obj.selectedSpecies.length == 0){
+							t.obj.selectedSpecies = t.sname;
+						}
 					});	
 				// Species Toggle button
 				$("#" + t.id + "speciesToggle input").click(function(c){
@@ -78,17 +77,32 @@ function ( declare, Query, QueryTask ) {
 					if (t.efhPres[t.obj.selectedSpecies]){
 						var spc = t.efhPres[t.obj.selectedSpecies][0]
 						var a = t.efhPres[t.obj.selectedSpecies]
-						var str = "";
+						var str1 = "";
 						for (var i = 1; i < a.length; i++) {
 							var type = a[i].replace("JUV", "Juvenile").replace("SEL", "Spawning Egg Larvae").replace("ADU", "Adult")
 							var cd = spc + a[i]
 							var val = t.symLayers.EFH[cd]							
+							if (i == 1){
+								str1 = type;
+							}else{
+								str1 = str1 + ", " + type;
+							}
+						}	
+						$("#" + t.id + "esFishHab").html("<span style='margin-left:4px;'>" + str1 + "</span>")
+						
+					}else{
+						$("#" + t.id + "esFishHab").html("<span style='margin-left:4px;'>None</span>")
+					}
+					var tmp = t.obj.selectedSpecies.replace(/\s+/g, '')
+					if (t.symLayers.EFH1[tmp]){
+						var str = "";
+						$.each(t.symLayers.EFH1[tmp],function(i,v){
 							str = str + 
 								"<label style='margin-left:10px' class='form-component' for='option-" + i + "'><input type='checkbox' id='option-" + i + 
-								"' name='efhcb' value='" + val + "'><div class='check'></div><span class='form-text' style='margin-left:4px;'>" + type + "</span></label>"
-						}	
-						$("#" + t.id + "esFishHab").html(str)
-						$("#" + t.id + "esFishHab input").click(function(c){
+								"' name='efhcb' value='" + v[1] + "'><div class='check'></div><span class='form-text' style='margin-left:4px;'>" + v[0] + "</span></label>"
+						})
+						$("#" + t.id + "esFishHabGulf").html(str);
+						$("#" + t.id + "esFishHabGulf input").click(function(c){
 							var lyr = Number(c.currentTarget.value);
 							if(c.currentTarget.checked){
 								t.obj.visibleLayers.push(lyr)
@@ -101,8 +115,9 @@ function ( declare, Query, QueryTask ) {
 							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 						})
 					}else{
-						$("#" + t.id + "esFishHab").html("<span style='margin-left:10px;'>None</span>")
+						$("#" + t.id + "esFishHabGulf").html("<span style='margin-left:4px;'>None</span>")
 					}
+
 					$.each(t.selRegSpecies,function(i,v){
 						if (v.SpecName == sp){
 							$.each(t.SpecObj,function(j,w){
