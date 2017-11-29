@@ -17,17 +17,10 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 				}
 				t.dynamicLayer.on("load", function () { 			
 					t.layersArray = t.dynamicLayer.layerInfos;
-					if (t.obj.stateSet == "no"){
-						var ext = t.dynamicLayer.fullExtent;
-						t.map.setExtent(ext, true);
-					}
-					// Save and Share Handler					
-					if (t.obj.stateSet == "yes"){
-						//extent
-						var extent = new Extent(t.obj.extent.xmin, t.obj.extent.ymin, t.obj.extent.xmax, t.obj.extent.ymax, new SpatialReference({ wkid:4326 }))
-						t.map.setExtent(extent, true);
-						t.obj.stateSet = "no";
-					}	
+					//extent
+					var extent = new Extent(t.obj.extent.xmin, t.obj.extent.ymin, t.obj.extent.xmax, t.obj.extent.ymax, new SpatialReference({ wkid:4326 }))
+					t.map.setExtent(extent, true);
+					t.obj.stateSet = "no";	
 				});	
 				//query regulatory table
 				var q = new Query();
@@ -109,6 +102,15 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 									})
 								})
 								var selsp = $("#" + t.id + "speciesToggle input[value='" + t.obj.selectedSpecies + "']").attr("id")
+								if (!selsp){
+									$.each($("#" + t.id + "speciesToggle label"),function(i,v){
+										if ( !$(v).hasClass("hideClass") ){
+											var cid = $(v).attr("for")
+											$("#" + cid).trigger("click")
+											return false
+										}
+									})
+								}
 								if ( !$("label[for='"+ selsp +"']").hasClass("hideClass") ){
 									$("#" + selsp).trigger("click")
 								}else{
@@ -122,10 +124,8 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 								}
 
 
-
-						
 								// show table and chart
-								$("#" + t.id + "click-map").html("Species in Selected Area") // <span style='color:#3A72B9;'>" + t.atts.GeoName + "</span>");
+								$("#" + t.id + "click-map").html("Species in <span style='color:#3A72B9;'>" + t.atts.NAME + "</span>");
 								$("#" + t.id + "tclick-wrap").slideDown();
 								// update layer visibility
 								t.layerDefs[t.selFtr] = "OBJECTID = " + t.atts.OBJECTID ;

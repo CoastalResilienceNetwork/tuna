@@ -44,14 +44,13 @@ function ( declare, Query, QueryTask ) {
 						t.obj.symbolizeBy = c.target.value;
 						t.sname = $(c.currentTarget).find(":selected").text()
 						t.obj.visibleLayers = [ t.symLayers[t.obj.selectedScale][t.obj.symbolizeBy] ];
-						if (t.obj.selectedScale == "USLeaseBlock"){
-							t.obj.visibleLayers.push(t.USProtractionArea)
-						}
 						if (t.selFtr > -1){
 							t.obj.visibleLayers.push(t.selFtr)
 						}
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-					
+						if (t.obj.selectedSpecies.length == 0){
+							t.obj.selectedSpecies = t.sname;
+						}
 					});	
 				// Species Toggle button
 				$("#" + t.id + "speciesToggle input").click(function(c){

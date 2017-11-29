@@ -2,8 +2,13 @@
 	"visibleLayers": [-1],
 	"symbolizeBy": "",
 	"selectedScale": "",
-	"extent": "",
+	"extent": {
+		"xmin": -98.61328125,
+		"ymin": 17.392579271057766,
+		"xmax": -79.716796875,
+		"ymax": 31.653381399664
+	},
 	"stateSet": "no",
-	"selectedSpecies": "Yellowfin Tuna",
+	"selectedSpecies": "",
 	"selectedIucn": "-Habitat_and_Ecology"
 }
