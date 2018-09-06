@@ -32,15 +32,30 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 				this.rendered = true;							
 				this.render();
 				$(this.printButton).hide();
+				ga('send','event',{
+					eventCategory: 'Tuna Fisheries', 
+					eventAction: 'App opened', 
+					eventLabel: 'Initial open'
+				});
 			}else{
 				this.dynamicLayer.setVisibleLayers(this.obj.visibleLayers);
 				$('#' + this.id).parent().parent().css('display', 'flex');
+				ga('send','event',{
+					eventCategory: 'Tuna Fisheries', 
+					eventAction: 'App opened', 
+					eventLabel: 'Additional openings'
+				});
 			}
 			this.open = "yes";
 		},
 		// Called when user hits the minimize '_' icon on the pluging. Also called before hibernate when users closes app by clicking 'X'.
 		deactivate: function () {
-			this.open = "no";	
+			this.open = "no";
+			ga('send','event',{
+				eventCategory: 'Tuna Fisheries', 
+				eventAction: 'App closed', 
+				eventLabel: 'Closed or minimized'
+			});
 		},	
 		// Called when user hits 'Save and Share' button. This creates the url that builds the app at a given state using JSON. 
 		// Write anything to you varObject.json file you have tracked during user activity.		
